@@ -15,6 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
 import React from "react";
 
 // reactstrap components
@@ -28,11 +29,19 @@ import {
   Input,
   Row,
   Col,
+  InputGroup,
+  InputGroupText,
+  InputGroupAddon,
 } from "reactstrap";
 
 // core components
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
+// const ComboBoxComponent = () => {
+//   const [selectedOption, setSelectedOption] = useState('');
 
+//   const handleSelectChange = (e) => {
+//     setSelectedOption(e.target.value);
+//   };
 function User() {
   return (
     <>
@@ -47,173 +56,178 @@ function User() {
               <CardBody>
                 <Form>
                   <Row>
-                    <Col className="pr-1" md="5">
-                      <FormGroup>
-                        <label>Company (disabled)</label>
-                        <Input
-                          defaultValue="Creative Code Inc."
-                          disabled
-                          placeholder="Company"
-                          type="text"
-                        />
-                      </FormGroup>
-                    </Col>
-                    <Col className="px-1" md="3">
+                    <Col className="pr-1" md="9">
+                      {/* row 1 */}
                       <FormGroup>
                         <label>Username</label>
                         <Input
-                          defaultValue="michael23"
+                          defaultValue=""
+                          // disabled
                           placeholder="Username"
                           type="text"
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="4">
+                    
+                    
+                    <Col className="pr-1" md="9">
                       <FormGroup>
+                        {/* row 2 col 1 */}
+                        <label>Cell Phone number</label>
+                        <Input
+                          defaultValue=""
+                          placeholder="Cell"
+                          type="text"
+                        />
+                      </FormGroup>
+                    </Col>
+
+                    <Col className="pr-1" md="9">
+                      <FormGroup>
+                        
                         <label htmlFor="exampleInputEmail1">
                           Email address
                         </label>
-                        <Input placeholder="Email" type="email" />
+                        <Input placeholder="Email"
+                         type="email"
+                        />
                       </FormGroup>
                     </Col>
+                  
                   </Row>
                   <Row>
-                    <Col className="pr-1" md="6">
+                  
+                    <Col className="pr-1" md="9">
                       <FormGroup>
-                        <label>First Name</label>
+                        {/* row 2 col 1 */}
+                        <label>Name and Surname</label>
                         <Input
-                          defaultValue="Mike"
-                          placeholder="Company"
+                          defaultValue=""
+                          placeholder="Name and Surname"
                           type="text"
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="6">
-                      <FormGroup>
-                        <label>Last Name</label>
+                    <Col className="pl-1" md="9">
+                      {/* <FormGroup>
+                        <label>Password</label>
                         <Input
-                          defaultValue="Andrew"
-                          placeholder="Last Name"
-                          type="text"
+                          defaultValue=""
+                          placeholder="Password"
+                          type="password"
                         />
+                      </FormGroup> */}
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md="5">
+                      <FormGroup>
+                        {/* <label>User Type</label>
+                        <Input
+                          defaultValue=""
+                          placeholder="User Type"
+                          type="text"
+                        /> */}
                       </FormGroup>
                     </Col>
                   </Row>
                   <Row>
-                    <Col md="12">
-                      <FormGroup>
-                        <label>Address</label>
+                    <Col className="pr-1" md="9">
+                    <FormGroup>
+                        <label>Password</label>
                         <Input
-                          defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                          placeholder="Home Address"
-                          type="text"
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col className="pr-1" md="4">
-                      <FormGroup>
-                        <label>City</label>
-                        <Input
-                          defaultValue="Mike"
-                          placeholder="City"
-                          type="text"
+                          defaultValue=""
+                          placeholder="Password"
+                          type="password"
                         />
                       </FormGroup>
                     </Col>
                     <Col className="px-1" md="4">
                       <FormGroup>
-                        <label>Country</label>
+                        {/* col 2 row 3 */}
+
+                        {/* <label>Country</label>
                         <Input
                           defaultValue="Andrew"
                           placeholder="Country"
                           type="text"
-                        />
+                        /> */}
                       </FormGroup>
                     </Col>
                     <Col className="pl-1" md="4">
-                      <FormGroup>
+                      {/* col 3 row 3 */}
+
+                      {/* <FormGroup>
                         <label>Postal Code</label>
                         <Input placeholder="ZIP Code" type="number" />
-                      </FormGroup>
+                      </FormGroup> */}
                     </Col>
                   </Row>
                   <Row>
-                    <Col md="12">
-                      <FormGroup>
-                        <label>About Me</label>
+                  <Col className="pr-1" md="9">
+                    <FormGroup>
+                      <label>User Type</label>
                         <Input
-                          cols="80"
-                          defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in
-                            that two seat Lambo."
-                          placeholder="Here can be your description"
-                          rows="4"
-                          type="textarea"
+                          defaultValue=""
+                          placeholder="User Type"
+                          type="text"
                         />
+                        
                       </FormGroup>
                     </Col>
+                    
+                    
                   </Row>
                 </Form>
               </CardBody>
             </Card>
           </Col>
-          <Col md="4">
+          {/* Right card in Manage Users */}
+          <Col md="4"  >
             <Card className="card-user">
-              <div className="image">
-                <img alt="..." src={require("assets/img/bg5.jpg").default} />
-              </div>
+              {/* <div className="image"> */}
+
+              <br/>
+              
+              
+              <form>
+            <InputGroup className="no-border">
+              <Input placeholder="Search..." />
+              <InputGroupAddon addonType="append">
+                <InputGroupText>
+                  <i className="now-ui-icons ui-1_zoom-bold" />
+                </InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
+          </form>
+              {/* </div> */}
 
 
-              {/* Right card in Manage Users */}
+              
               <CardBody>
-                <div className="author">
-                  <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                    <img
-                      alt="..."
-                      className="avatar border-gray"
-                      src={require("assets/img/mike.jpg").default}
-                    />
-                    <h5 className="title">Mike Andrew</h5>
-                  </a>
-                  <p className="description">michael24</p>
+              
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                
+
+                
+                
+              
+              
+                <div className="author" >
+                <button type="Update" class="btn btn-danger" onClick={() => DeleteUser(User.username)}>Update</button>
+                <button type="button" class="btn btn-danger" onClick={() => DeleteUser(User.username)}>Delete</button>
+                <hr />
                 </div>
-                <p className="description text-center">
-                  "Lamborghini Mercy <br />
-                  Your chick she so thirsty <br />
-                  I'm in that two seat Lambo"
-                </p>
+               
               </CardBody>
-              <hr />
-              <div className="button-container">
-                <Button
-                  className="btn-neutral btn-icon btn-round"
-                  color="default"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                  size="lg"
-                >
-                  <i className="fab fa-facebook-f" />
-                </Button>
-                <Button
-                  className="btn-neutral btn-icon btn-round"
-                  color="default"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                  size="lg"
-                >
-                  <i className="fab fa-twitter" />
-                </Button>
-                <Button
-                  className="btn-neutral btn-icon btn-round"
-                  color="default"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                  size="lg"
-                >
-                  <i className="fab fa-google-plus-g" />
-                </Button>
-              </div>
+             
+              <div className="author">
+                
+
+                </div>
             </Card>
           </Col>
         </Row>
@@ -221,5 +235,7 @@ function User() {
     </>
   );
 }
+// }
 
 export default User;
+

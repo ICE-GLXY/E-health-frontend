@@ -22,6 +22,7 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
+
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -3339,7 +3340,7 @@ Created using IcoMoon - icomoon.io
   text-transform: none;
   margin-top: -77px; }
   .card-user .author a + p.description {
-    margin-top: -7px; }
+    margin-top: -10px; }
 
 .card-user .avatar {
   width: 124px;
@@ -4684,3 +4685,5 @@ Created using IcoMoon - icomoon.io
 
 #tables .table-responsive {
   margin-bottom: 30px; }
+
+  
