@@ -18,6 +18,8 @@ import {
 
 // core components
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
+import axios from 'axios';
+import {useEffect, useState } from "react";
 // const ComboBoxComponent = () => {
 //   const [selectedOption, setSelectedOption] = useState('');
 
@@ -25,6 +27,112 @@ import PanelHeader from "components/PanelHeader/PanelHeader.js";
 //     setSelectedOption(e.target.value);
 //   };
 function User() {
+
+  const [username, setId] = useState('');
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [cellPhoneNumber, setCellPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [userType, setUserType] = useState("");
+  const [users, setUsers] = useState([]);
+
+
+ 
+useEffect(() => {
+  (async () => await Load())();
+  }, []);
+ 
+ 
+  async function  Load()
+  {
+     const result = await axios.get(
+         "http://localhost:8080/E-Health-System/User/all");
+         setUsers(result.data);
+         console.log(result.data);
+  }
+ 
+
+  
+     async function save(event)
+    {
+        event.preventDefault();
+    try
+        {
+         await axios.post("http://localhost:8080/E-Health-System/User/save",
+        {
+          username: username,
+          name: name,
+          password: password,
+          cellPhoneNumber: cellPhoneNumber,
+          email: email,
+          userType: userType
+        });
+          alert("user Registation Successfully");
+          setId("");
+          setName("");
+          setPassword("");
+          setCellPhoneNumber("");
+          setEmail("");
+          setUserType("");
+          Load();
+        }
+    catch(err)
+        {
+          alert("User Registation Failed");
+        }
+   }
+
+ 
+   async function editUsers(users)
+   {
+      setId(users.username);
+      setName(users.name);
+      setPassword(users.password);
+      setCellPhoneNumber(users.cellPhoneNumber);
+      setEmail(users.email);
+      setUserType(users.userType);
+      // setId(users.users); //takeout 
+   }
+ 
+   async function DeleteUser(userId)
+   {
+        await axios.delete("http://localhost:8080/E-Health-System/User/delete/" + userId); 
+        alert("user deleted Successfully");
+        Load();
+   }
+ 
+   async function update(event)
+   {
+    event.preventDefault();
+ 
+   try
+       {
+        await axios.put("localhost:8080/E-Health-System/User/save"  ,
+       {
+
+        username: username,
+          name: name,
+          password: password,
+          cellPhoneNumber: cellPhoneNumber,
+          email: email,
+          userType: userType
+       
+       });
+         alert("Registation Updated");
+         setId("");
+         setName("");
+         setPassword("");
+         setCellPhoneNumber("");
+         setEmail("");
+         setUserType("");
+         Load();
+       }
+   catch(err)
+       {
+         alert("user Updateddd Failed");
+       }
+  }
+
   return (
     <>
       <PanelHeader size="sm" />
@@ -42,11 +150,16 @@ function User() {
                       {/* row 1 */}
                       <FormGroup>
                         <label>Username</label>
-                        <Input
-                          defaultValue=""
-                          // disabled
-                          placeholder="Username"
-                          type="text"
+                        <Input type="text" id="username"
+                    value={username}
+                    onChange={(event) =>
+                      {
+                        setId(event.target.value);      
+                      }}
+                          // defaultValue=""
+                          // // disabled
+                          // placeholder="Username"
+                          // type="text"
                         />
                       </FormGroup>
                     </Col>
@@ -56,10 +169,12 @@ function User() {
                       <FormGroup>
                         {/* row 2 col 1 */}
                         <label>Cell Phone number</label>
-                        <Input
-                          defaultValue=""
-                          placeholder="Cell"
-                          type="text"
+                        <Input type="text" id="cellPhoneNumber" 
+                      value={cellPhoneNumber}
+                      onChange={(event) =>
+                      {
+                        setCellPhoneNumber(event.target.value);      
+                      }}
                         />
                       </FormGroup>
                     </Col>
@@ -70,8 +185,12 @@ function User() {
                         <label htmlFor="exampleInputEmail1">
                           Email address
                         </label>
-                        <Input placeholder="Email"
-                         type="email"
+                        <Input type="text" id="email" 
+                      value={email}
+                    onChange={(event) =>
+                      {
+                        setEmail(event.target.value);      
+                      }}
                         />
                       </FormGroup>
                     </Col>
@@ -83,10 +202,12 @@ function User() {
                       <FormGroup>
                         {/* row 2 col 1 */}
                         <label>Name and Surname</label>
-                        <Input
-                          defaultValue=""
-                          placeholder="Name and Surname"
-                          type="text"
+                        <Input type="text" id="name" 
+                     value={name}
+                      onChange={(event) =>
+                        {
+                          setName(event.target.value);      
+                        }}
                         />
                       </FormGroup>
                     </Col>
@@ -117,10 +238,12 @@ function User() {
                     <Col className="pr-1" md="9">
                     <FormGroup>
                         <label>Password</label>
-                        <Input
-                          defaultValue=""
-                          placeholder="Password"
-                          type="password"
+                        <Input type="text" id="password" 
+                      value={password}
+                    onChange={(event) =>
+                      {
+                        setPassword(event.target.value);      
+                      }}
                         />
                       </FormGroup>
                     </Col>
@@ -149,10 +272,12 @@ function User() {
                   <Col className="pr-1" md="9">
                     <FormGroup>
                       <label>User Type</label>
-                        <Input
-                          defaultValue=""
-                          placeholder="User Type"
-                          type="text"
+                        <Input type="text" id="userType" 
+                      value={userType}
+                    onChange={(event) =>
+                      {
+                        setUserType(event.target.value);      
+                      }}
                         />
                         
                       </FormGroup>
@@ -199,7 +324,7 @@ function User() {
               
               
                 <div className="author" >
-                <button type="Update" class="btn btn-danger" onClick={() => DeleteUser(User.username)}>Update</button>
+                <button type="Update" class="btn btn-danger"  onClick={save}>Register</button>
                 <button type="button" class="btn btn-danger" onClick={() => DeleteUser(User.username)}>Delete</button>
                 <hr />
                 </div>
