@@ -29,16 +29,16 @@ var dashRoutes = [
     component: < UserPage/>,
     layout: "/admin",
   },
-  {
-    path: "/maps",
-    name: "Receptionist List",
-    icon: "files_paper",
-    component: <Maps />,
-    layout: "/admin",
-  },
+  // {
+  //   path: "/maps",
+  //   name: "Receptionist List",
+  //   icon: "files_paper",
+  //   component: <Maps />,
+  //   layout: "/admin",
+  // },
   {
     path: "/notifications",
-    name: "Doctor List",
+    name: "Patient Medical Information",
     icon: "files_paper",
     component: <Notifications />,
     layout: "/admin",
@@ -52,7 +52,7 @@ var dashRoutes = [
   },
   {
     path: "/typography",
-    name: "Patient List",
+    name: "Medical Facility",
     icon: "files_paper",
     component: <Typography />,
     layout: "/admin",
