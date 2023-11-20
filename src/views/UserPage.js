@@ -29,6 +29,7 @@ import {useEffect, useState } from "react";
 function User() {
 
   const [username, setId] = useState('');
+  const [searchUsername, setSearchId] = useState('');
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [cellPhoneNumber, setCellPhoneNumber] = useState("");
@@ -49,6 +50,30 @@ useEffect(() => {
          "http://localhost:8080/E-Health-System/User/all");
          setUsers(result.data);
          console.log(result.data);
+  }
+
+   
+
+  async function search(event)
+  {
+    event.preventDefault();
+
+    try {
+      await axios.get("http://localhost:8080/E-Health-System/User/read/" + searchUsername)
+      .then((res) => {
+        console.log(res.data);
+
+      setId(res.data.username);
+      setName(res.data.name);
+      setPassword(res.data.password);
+      setCellPhoneNumber(res.data.cellPhoneNumber);
+      setEmail(res.data.email);
+      setUserType(res.data.userType);
+      });
+      }
+      catch(err){
+      alert("User search Failed");
+    }
   }
  
 
@@ -83,16 +108,16 @@ useEffect(() => {
    }
 
  
-   async function editUsers(users)
-   {
-      setId(users.username);
-      setName(users.name);
-      setPassword(users.password);
-      setCellPhoneNumber(users.cellPhoneNumber);
-      setEmail(users.email);
-      setUserType(users.userType);
-      // setId(users.users); //takeout 
-   }
+  //  async function editUsers(users)
+  //  {
+  //     setId(users.username);
+  //     setName(users.name);
+  //     setPassword(users.password);
+  //     setCellPhoneNumber(users.cellPhoneNumber);
+  //     setEmail(users.email);
+  //     setUserType(users.userType);
+  //     // setId(users.users); //takeout 
+  //  }
  
    async function DeleteUser(userId)
    {
@@ -101,37 +126,37 @@ useEffect(() => {
         Load();
    }
  
-   async function update(event)
-   {
-    event.preventDefault();
+  //  async function update(event)
+  //  {
+  //   event.preventDefault();
  
-   try
-       {
-        await axios.put("localhost:8080/E-Health-System/User/save"  ,
-       {
+  //  try
+  //      {
+  //       await axios.put("localhost:8080/E-Health-System/User/save"  ,
+  //      {
 
-        username: username,
-          name: name,
-          password: password,
-          cellPhoneNumber: cellPhoneNumber,
-          email: email,
-          userType: userType
+  //       username: username,
+  //         name: name,
+  //         password: password,
+  //         cellPhoneNumber: cellPhoneNumber,
+  //         email: email,
+  //         userType: userType
        
-       });
-         alert("Registation Updated");
-         setId("");
-         setName("");
-         setPassword("");
-         setCellPhoneNumber("");
-         setEmail("");
-         setUserType("");
-         Load();
-       }
-   catch(err)
-       {
-         alert("user Updateddd Failed");
-       }
-  }
+  //      });
+  //        alert("Registation Updated");
+  //        setId("");
+  //        setName("");
+  //        setPassword("");
+  //        setCellPhoneNumber("");
+  //        setEmail("");
+  //        setUserType("");
+  //        Load();
+  //      }
+  //  catch(err)
+  //      {
+  //        alert("user Updateddd Failed");
+  //      }
+  // }
 
   return (
     <>
@@ -302,7 +327,17 @@ useEffect(() => {
               <CardBody>
               <form>
             <InputGroup className="no-border">
-              <Input placeholder="username..." />
+              {/* <Input placeholder="username..." /> */}
+              <Input placeholder="username..." type="text" id="username" 
+                      value={searchUsername}
+                    onChange={(event) =>
+                      {
+                             setSearchId(event.target.value);
+                            //  setId.setState({disableElement:true})
+                      }}
+                        />
+
+
               <InputGroupAddon addonType="append">
                 <InputGroupText>
                   <i className="now-ui-icons ui-1_zoom-bold" />
@@ -326,6 +361,7 @@ useEffect(() => {
               
               
                 <div className="author" >
+                <button type="Update" class="btn btn-danger"  onClick={search}>Search</button>
                 <button type="Update" class="btn btn-danger"  onClick={save}>Save</button>
                 <button type="button" class="btn btn-danger" onClick={() => DeleteUser(User.username)}>Delete</button>
                 <hr />
