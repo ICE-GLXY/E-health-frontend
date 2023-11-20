@@ -19,7 +19,9 @@ import {
 // core components
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
 import axios from 'axios';
+import {EyeInvisibleOutlined, EyeOutlined} from "@ant-design/icons";
 import {useEffect, useState } from "react";
+import Combobox from "react-widgets/Combobox";
 // const ComboBoxComponent = () => {
 //   const [selectedOption, setSelectedOption] = useState('');
 
@@ -37,7 +39,7 @@ function User() {
   const [userType, setUserType] = useState("");
   const [users, setUsers] = useState([]);
 
-
+  const[visible, setVisible] = useState(false);
  
 useEffect(() => {
   (async () => await Load())();
@@ -92,7 +94,7 @@ useEffect(() => {
           email: email,
           userType: userType
         });
-          alert("user Registation Successfully");
+          alert("User Saved Successfully");
           setId("");
           setName("");
           setPassword("");
@@ -103,7 +105,7 @@ useEffect(() => {
         }
     catch(err)
         {
-          alert("User Registation Failed");
+          alert("User Saving Failed");
         }
    }
 
@@ -119,44 +121,35 @@ useEffect(() => {
   //     // setId(users.users); //takeout 
   //  }
  
-   async function DeleteUser(userId)
+   async function DeleteUser(event)
    {
-        await axios.delete("http://localhost:8080/E-Health-System/User/delete/" + userId); 
-        alert("user deleted Successfully");
-        Load();
+        // await axios.delete("http://localhost:8080/E-Health-System/User/delete/" + username); 
+        // alert("user deleted Successfully");
+        // Load();
+
+          event.preventDefault();
+      
+          try { 
+            alert("User deleted");
+            await axios.delete("http://localhost:8080/E-Health-System/User/delete/" + searchUsername)
+            .then((res) => {
+              console.log(res.data);
+              setId("");
+              setName("");
+              setPassword("");
+              setCellPhoneNumber("");
+              setEmail("");
+              setUserType("");
+              Load();
+            });
+            }
+            catch(err){
+            alert("User delete Failed");
+        }
+
+
    }
  
-  //  async function update(event)
-  //  {
-  //   event.preventDefault();
- 
-  //  try
-  //      {
-  //       await axios.put("localhost:8080/E-Health-System/User/save"  ,
-  //      {
-
-  //       username: username,
-  //         name: name,
-  //         password: password,
-  //         cellPhoneNumber: cellPhoneNumber,
-  //         email: email,
-  //         userType: userType
-       
-  //      });
-  //        alert("Registation Updated");
-  //        setId("");
-  //        setName("");
-  //        setPassword("");
-  //        setCellPhoneNumber("");
-  //        setEmail("");
-  //        setUserType("");
-  //        Load();
-  //      }
-  //  catch(err)
-  //      {
-  //        alert("user Updateddd Failed");
-  //      }
-  // }
 
   return (
     <>
@@ -166,12 +159,13 @@ useEffect(() => {
           <Col md="8">
             <Card>
               <CardHeader>
-                <h5 className="title">User Creation</h5>
+                <h5 className="title text-center">User Creation</h5>
+                <hr />
               </CardHeader>
               <CardBody>
                 <Form>
                   <Row>
-                    <Col className="pr-1" md="9">
+                    <Col className="pr-1" md="11">
                       {/* row 1 */}
                       <FormGroup>
                         <label>Username</label>
@@ -181,19 +175,15 @@ useEffect(() => {
                       {
                         setId(event.target.value);      
                       }}
-                          // defaultValue=""
-                          // // disabled
-                          // placeholder="Username"
-                          // type="text"
                         />
                       </FormGroup>
                     </Col>
                     
                     
-                    <Col className="pr-1" md="9">
+                    <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>Cell Phone number</label>
+                        <label>Phone Number</label>
                         <Input type="text" id="cellPhoneNumber" 
                       value={cellPhoneNumber}
                       onChange={(event) =>
@@ -204,7 +194,7 @@ useEffect(() => {
                       </FormGroup>
                     </Col>
 
-                    <Col className="pr-1" md="9">
+                    <Col className="pr-1" md="11">
                       <FormGroup>
                         
                         <label htmlFor="exampleInputEmail1">
@@ -223,7 +213,7 @@ useEffect(() => {
                   </Row>
                   <Row>
                   
-                    <Col className="pr-1" md="9">
+                    <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
                         <label>Name and Surname</label>
@@ -236,68 +226,38 @@ useEffect(() => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="9">
-                      {/* <FormGroup>
-                        <label>Password</label>
-                        <Input
-                          defaultValue=""
-                          placeholder="Password"
-                          type="password"
-                        />
-                      </FormGroup> */}
-                    </Col>
                   </Row>
                   <Row>
-                    <Col md="5">
-                      <FormGroup>
-                        {/* <label>User Type</label>
-                        <Input
-                          defaultValue=""
-                          placeholder="User Type"
-                          type="text"
-                        /> */}
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col className="pr-1" md="9">
+                    <Col className="pr-1" md="11">
                     <FormGroup>
                         <label>Password</label>
-                        <Input type="text" id="password" 
+                        <InputGroup >
+                        <Input type={visible ? "text" : "password"} id="password" 
                       value={password}
                     onChange={(event) =>
                       {
                         setPassword(event.target.value);      
                       }}
+                      
                         />
+                        
+              <InputGroupAddon addonType="append">
+                <InputGroupText>
+                <div onClick={() => setVisible(!visible)}>
+                          {visible ? <EyeOutlined/> : <EyeInvisibleOutlined/>}
+                        </div>
+                </InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
                       </FormGroup>
-                    </Col>
-                    <Col className="px-1" md="4">
-                      <FormGroup>
-                        {/* col 2 row 3 */}
-
-                        {/* <label>Country</label>
-                        <Input
-                          defaultValue="Andrew"
-                          placeholder="Country"
-                          type="text"
-                        /> */}
-                      </FormGroup>
-                    </Col>
-                    <Col className="pl-1" md="4">
-                      {/* col 3 row 3 */}
-
-                      {/* <FormGroup>
-                        <label>Postal Code</label>
-                        <Input placeholder="ZIP Code" type="number" />
-                      </FormGroup> */}
                     </Col>
                   </Row>
                   <Row>
-                  <Col className="pr-1" md="9">
+                  <Col className="pr-1" md="11">
                     <FormGroup>
                       <label>User Type</label>
                         <Input type="text" id="userType" 
+                        
                       value={userType}
                     onChange={(event) =>
                       {
@@ -307,8 +267,6 @@ useEffect(() => {
                         
                       </FormGroup>
                     </Col>
-                    
-                    
                   </Row>
                 </Form>
               </CardBody>
@@ -318,11 +276,10 @@ useEffect(() => {
           <Col md="4"  >
             <Card className="card-user">
             <CardHeader>
-                <h5 className="title" >Search</h5>
+                <h5 className="title text-center"  >Search</h5>
+                <hr />
               </CardHeader>
               {/* <div className="image"> */}
-
-              <br/>
               
               <CardBody>
               <form>
@@ -333,7 +290,7 @@ useEffect(() => {
                     onChange={(event) =>
                       {
                              setSearchId(event.target.value);
-                            //  setId.setState({disableElement:true})
+                            //  setId(event.target.value);
                       }}
                         />
 
@@ -363,7 +320,7 @@ useEffect(() => {
                 <div className="author" >
                 <button type="Update" class="btn btn-danger"  onClick={search}>Search</button>
                 <button type="Update" class="btn btn-danger"  onClick={save}>Save</button>
-                <button type="button" class="btn btn-danger" onClick={() => DeleteUser(User.username)}>Delete</button>
+                <button type="button" class="btn btn-danger" onClick={DeleteUser}>Delete</button>
                 <hr />
                 </div>
                
