@@ -141,7 +141,7 @@ useEffect(() => {
           <Col md="8">
             <Card>
               <CardHeader>
-                <h5 className="title">Edit Profile</h5>
+                <h5 className="title">User Creation</h5>
               </CardHeader>
               <CardBody>
                 <Form>
@@ -292,14 +292,17 @@ useEffect(() => {
           {/* Right card in Manage Users */}
           <Col md="4"  >
             <Card className="card-user">
+            <CardHeader>
+                <h5 className="title" >Search</h5>
+              </CardHeader>
               {/* <div className="image"> */}
 
               <br/>
               
-              
+              <CardBody>
               <form>
             <InputGroup className="no-border">
-              <Input placeholder="Search..." />
+              <Input placeholder="username..." />
               <InputGroupAddon addonType="append">
                 <InputGroupText>
                   <i className="now-ui-icons ui-1_zoom-bold" />
@@ -311,7 +314,6 @@ useEffect(() => {
 
 
               
-              <CardBody>
               
                 <br/>
                 <br/>
@@ -324,7 +326,7 @@ useEffect(() => {
               
               
                 <div className="author" >
-                <button type="Update" class="btn btn-danger"  onClick={save}>Register</button>
+                <button type="Update" class="btn btn-danger"  onClick={save}>Save</button>
                 <button type="button" class="btn btn-danger" onClick={() => DeleteUser(User.username)}>Delete</button>
                 <hr />
                 </div>
