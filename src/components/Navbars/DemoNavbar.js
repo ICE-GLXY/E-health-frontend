@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Now UI Dashboard React - v1.5.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/now-ui-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/now-ui-dashboard-react/blob/main/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -139,7 +122,7 @@ function DemoNavbar(props) {
           <span className="navbar-toggler-bar navbar-kebab" />
         </NavbarToggler>
         <Collapse isOpen={isOpen} navbar className="justify-content-end">
-          <form>
+          {/* <form>
             <InputGroup className="no-border">
               <Input placeholder="Search..." />
               <InputGroupAddon addonType="append">
@@ -148,9 +131,9 @@ function DemoNavbar(props) {
                 </InputGroupText>
               </InputGroupAddon>
             </InputGroup>
-          </form>
+          </form> */}
           <Nav navbar>
-            <NavItem>
+            {/* <NavItem>
               <Link to="#pablo" className="nav-link">
                 <i className="now-ui-icons media-2_sound-wave" />
                 <p>
@@ -174,7 +157,7 @@ function DemoNavbar(props) {
                 <DropdownItem tag="a">Another Action</DropdownItem>
                 <DropdownItem tag="a">Something else here</DropdownItem>
               </DropdownMenu>
-            </Dropdown>
+            </Dropdown> */}
             <NavItem>
               <Link to="#pablo" className="nav-link">
                 <i className="now-ui-icons users_single-02" />
