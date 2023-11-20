@@ -1,21 +1,3 @@
-/*!
-
-=========================================================
-* Now UI Dashboard React - v1.5.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/now-ui-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/now-ui-dashboard-react/blob/main/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-/*eslint-disable*/
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Nav } from "reactstrap";
@@ -50,20 +32,19 @@ function Sidebar(props) {
     <div className="sidebar" data-color={props.backgroundColor}>
       <div className="logo">
         <a
-          href="https://www.creative-tim.com?ref=nudr-sidebar"
+          // href="http://localhost:3000/admin/dashboard"
           className="simple-text logo-mini"
           target="_blank"
         >
-          <div className="logo-img">
-            <img src={logo} alt="react-logo" />
+          <div className="now-ui-icons media-2_sound-wave">
           </div>
         </a>
         <a
-          href="https://www.creative-tim.com?ref=nudr-sidebar"
+          // href="http://localhost:3000/admin/dashboard"
           className="simple-text logo-normal"
           target="_blank"
         >
-          E-Health System
+          E-Health
         </a>
       </div>
       <div className="sidebar-wrapper" ref={sidebar}>
@@ -92,3 +73,4 @@ function Sidebar(props) {
 }
 
 export default Sidebar;
+
