@@ -22,7 +22,7 @@ const tasks = [
 // // // table head data and table body data for Tables view
 // #############################
 
-const thead = ["User", "Name", "Password", "Cell Phone Number","Email","User Type"];
+const thead = ["User", "Name", "Password", "Phone Number","Email","User Type"];
 const tbody = [
   {
     className: "table-success",
