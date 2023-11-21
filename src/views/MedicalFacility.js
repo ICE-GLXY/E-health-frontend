@@ -165,7 +165,7 @@ function RegularTables()
 
 
                 <Table responsive>
-                  <thead className="text-primary ">
+                  <thead className="text-primary" >
                     <tr>
                       {thead.map((prop, key) => {
                         if (key === thead.length - 1)
@@ -186,10 +186,10 @@ function RegularTables()
                   {medicalFacilitys.map(function fn(medicalFacility)
            {
                 return(
-                <tbody style={{ fontSize: "12px" }}>
+                <tbody style={{ fontSize: "12px", whiteSpace:"nowrap" }} >
                     <tr>
                     <td>{medicalFacility.medicalFacilityID}</td>
-                    <td>{medicalFacility.name}</td>
+                    <td >{medicalFacility.name}</td>
                     <td>{medicalFacility.streetNumber}</td>        
                     <td>{medicalFacility.streetName}</td>   
                     <td>{medicalFacility.city}</td>   

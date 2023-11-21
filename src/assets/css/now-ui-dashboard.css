@@ -1303,7 +1303,8 @@ p.description {
 
 .text-primary,
 a.text-primary:focus, a.text-primary:hover {
-  color: #f96332 !important; }
+  color: #f96332 !important;
+ white-space: nowrap;}
 
 .text-info,
 a.text-info:focus, a.text-info:hover {
