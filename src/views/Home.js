@@ -22,7 +22,7 @@ import {
 // core components
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
 
-function Dashboard() {
+function Home() {
   return (
     <>
 
@@ -297,4 +297,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Home;

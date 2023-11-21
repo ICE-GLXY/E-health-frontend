@@ -1,60 +1,61 @@
-import Dashboard from "views/Dashboard.js";
-import Notifications from "views/Notifications.js";
-import Icons from "views/Icons.js";
-import Typography from "views/Typography.js";
-import TableList from "views/TableList.js";
-import Maps from "views/Maps.js";
+import Home from "views/Home.js";
+
+import NurseList from "views/NurseList.js";
+import PatientMedicalInformation from "views/PatientMedicalInformation.js";
+import UserList from "views/UserList.js";
+import ReceptionistList from "views/ReceptionistList.js";
 import Upgrade from "views/Upgrade.js";
-import UserPage from "views/UserPage.js";
+import ManageUsers from "views/ManageUsers.js";
+import MedicalFacility from "views/MedicalFacility.js"
 
 var dashRoutes = [
   {
-    path: "/dashboard",
+    path: "/Home",
     name: "Home",
     icon: "shopping_shop",
-    component: <Dashboard />,
+    component: <Home />,
     layout: "/admin",
   },
   {
-    path: "/extended-tables",
+    path: "/UserList",
     name: "User List",
     icon: "files_paper",
-    component: <TableList />,
+    component: <UserList />,
     layout: "/admin",
   },
   {
-    path: "/user-page",
+    path: "/ManageUsers",
     name: "Manage Users",
     icon: "design-2_ruler-pencil",
-    component: < UserPage/>,
+    component: < ManageUsers/>,
     layout: "/admin",
   },
+  // {
+  //   path: "/ReceptionistList",
+  //   name: "Receptionist List",
+  //   icon: "files_paper",
+  //   component: <ReceptionistList />,
+  //   layout: "/admin",
+  // },
   {
-    path: "/maps",
-    name: "Receptionist List",
+    path: "/PatientMedicalInformation",
+    name: "Patient Medical Information",
     icon: "files_paper",
-    component: <Maps />,
+    component: <PatientMedicalInformation />,
     layout: "/admin",
   },
+  // {
+  //   path: "/NurseList",
+  //   name: "Nurse List",
+  //   icon: "users_single-02",
+  //   component: <NurseList />,
+  //   layout: "/admin",
+  // },
   {
-    path: "/notifications",
-    name: "Doctor List",
+    path: "/MedicalFacility",
+    name: "Medical Facility",
     icon: "files_paper",
-    component: <Notifications />,
-    layout: "/admin",
-  },
-  {
-    path: "/icons",
-    name: "Nurse List",
-    icon: "users_single-02",
-    component: <Icons />,
-    layout: "/admin",
-  },
-  {
-    path: "/typography",
-    name: "Patient List",
-    icon: "files_paper",
-    component: <Typography />,
+    component: <MedicalFacility />,
     layout: "/admin",
   },
 ];
