@@ -13,7 +13,7 @@ import {
   Col,
   InputGroup,
   InputGroupText,
-  InputGroupAddon,
+  // InputGroupAddon,
 } from "reactstrap";
 
 // core components
@@ -193,13 +193,13 @@ function User() {
                               setPassword(event.target.value);
                             }}
                           />
-                          <InputGroupAddon addonType="append">
+                          {/* <InputGroupAddon addonType="append"> */}
                             <InputGroupText>
                               <div onClick={() => setVisible(!visible)}>
                                 {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
                               </div>
                             </InputGroupText>
-                          </InputGroupAddon>
+                          {/* </InputGroupAddon> */}
                         </InputGroup>
                       </FormGroup>
                     </Col>
@@ -250,11 +250,11 @@ function User() {
                         //  setId(event.target.value);
                       }}
                     />
-                    <InputGroupAddon addonType="append">
+                    {/* <InputGroupAddon addonType="append"> */}
                       <InputGroupText>
                         <i className="now-ui-icons ui-1_zoom-bold" />
                       </InputGroupText>
-                    </InputGroupAddon>
+                    {/* </InputGroupAddon> */}
                   </InputGroup>
                 </form>
                 {/* </div> */}

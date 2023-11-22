@@ -1,5 +1,6 @@
 import Home from "views/Home.js";
 
+import QrCode from "views/QrCode.js";
 import NurseList from "views/NurseList.js";
 import PatientMedicalInformation from "views/PatientMedicalInformation.js";
 import UserList from "views/UserList.js";
@@ -56,6 +57,13 @@ var dashRoutes = [
     name: "Medical Facility",
     icon: "files_paper",
     component: <MedicalFacility />,
+    layout: "/admin",
+  },
+  {
+    path: "/QrCode",
+    name: "Qr Code",
+    icon: "files_paper",
+    component: <QrCode />,
     layout: "/admin",
   },
 ];
