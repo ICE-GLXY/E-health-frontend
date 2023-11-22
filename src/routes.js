@@ -4,7 +4,7 @@ import QrCode from "views/QrCode.js";
 import NurseList from "views/NurseList.js";
 import PatientMedicalInformation from "views/PatientMedicalInformation.js";
 import UserList from "views/UserList.js";
-import ReceptionistList from "views/ReceptionistList.js";
+import PatientList from "views/PatientList.js";
 import Upgrade from "views/Upgrade.js";
 import ManageUsers from "views/ManageUsers.js";
 import MedicalFacility from "views/MedicalFacility.js"
@@ -32,10 +32,10 @@ var dashRoutes = [
     layout: "/admin",
   },
   // {
-  //   path: "/ReceptionistList",
-  //   name: "Receptionist List",
+  //   path: "/PatientList",
+  //   name: "Patient List",
   //   icon: "files_paper",
-  //   component: <ReceptionistList />,
+  //   component: <PatientList />,
   //   layout: "/admin",
   // },
   {
@@ -52,13 +52,14 @@ var dashRoutes = [
   //   component: <NurseList />,
   //   layout: "/admin",
   // },
-  {
-    path: "/MedicalFacility",
-    name: "Medical Facility",
-    icon: "files_paper",
-    component: <MedicalFacility />,
-    layout: "/admin",
-  },
+  
+  // {
+  //   path: "/MedicalFacility",
+  //   name: "Medical Facility",
+  //   icon: "files_paper",
+  //   component: <MedicalFacility />,
+  //   layout: "/admin",
+  // },
   {
     path: "/QrCode",
     name: "Qr Code",

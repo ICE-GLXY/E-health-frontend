@@ -28,7 +28,7 @@ function RegularTables()
     const [hospitalisations, setHospitalisations] = useState("");
     const [folderNumber, setFolderNumber] = useState("");
     const [patientMedicalInformations, setPatientMedicalInformations] = useState([]);
-    const thead = ["medicalRecordID", "medicalProblems", "prescription", "medicalTestResults", "allergies", "chronicMedication", "immunisations", "hospitalisations", "folderNumber"];
+    const thead = ["Medical Record ID", "Medical Problems", "Prescription", "Medical Test Results", "Allergies", "Chronic Medication", "Immunisations", "Hospitalisations", "Folder Number"];
 
     useEffect(() => {
       (async () => await Load())();

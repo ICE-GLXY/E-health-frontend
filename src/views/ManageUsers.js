@@ -13,6 +13,7 @@ import {
   Col,
   InputGroup,
   InputGroupText,
+  
   // InputGroupAddon,
 } from "reactstrap";
 
@@ -217,11 +218,12 @@ function User() {
                           setUserType(selectedType);
                         }}
                       >
+                        <option value=""></option>
                         <option value="Patient">Patient</option>
-                        <option value="Doctor">Doctor</option>
-                        <option value="Pharmacist">Pharmacist</option>
-                        <option value="Receptionist">Receptionist</option>
-                        <option value="Administrator">Administrator</option>
+                        <option value="Doctor" disabled>Doctor (Disabled)</option>
+                        <option value="Pharmacist" disabled>Pharmacist (Disabled)</option>
+                        <option value="Receptionist" disabled>Receptionist (Disabled)</option>
+                        <option value="Administrator" disabled>Administrator (Disabled)</option>
                       </select>
                       {/* </FormGroup> */}
                     </Col>
@@ -269,7 +271,172 @@ function User() {
                   <hr />
                 </div>
               </CardBody>
-              <div className="author">
+
+
+              {/* CHANGE INPUT ID AND VALUE */}
+             {/* Patient creation */}
+             <div className="author">
+              <Card>
+              <CardHeader>
+                <h5 className="title text-center">Add Patient Details</h5>
+                <hr />
+              </CardHeader>
+              <CardBody>
+                <Form>
+                  <Row>
+                    <Col className="pr-1" md="11">
+                      {/* row 1 */}
+                      <FormGroup>
+                        <label>Patient ID</label>
+                        <Input type="text" id="username"
+                          value={username}
+                          onChange={(event) => {
+                            setId(event.target.value);
+                          }}
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col className="pr-1" md="11">
+                      <FormGroup>
+                        {/* row 2 col 1 */}
+                        <label>User</label>
+                        <Input type="text" id="cellPhoneNumber"
+                          value={cellPhoneNumber}
+                          onChange={(event) => {
+                            setCellPhoneNumber(event.target.value);
+                          }} 
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col className="pr-1" md="11">
+                      <FormGroup>
+                        <label >
+                          Age
+                        </label>
+                        <Input type="text" id="text"
+                          value={email}
+                          onChange={(event) => {
+                            setEmail(event.target.value);
+                          }}
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className="pr-1" md="11">
+                      <FormGroup>
+                        {/* row 2 col 1 */}
+                        <label>Weight</label>
+                        <Input type="text" id="name"
+                          value={name}
+                          onChange={(event) => {
+                            setName(event.target.value);
+                          }}
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className="pr-1" md="11">
+                      <FormGroup>
+                        <label>Height</label>
+                        <InputGroup >
+                          <Input type="text" id="password"
+                            value={password}
+                            onChange={(event) => {
+                              setPassword(event.target.value);
+                            }}
+                          />
+                          {/* VIEW PASSWORD BUTTON */}
+                          {/* <InputGroupAddon addonType="append"> */}
+                            {/* <InputGroupText>
+                              <div onClick={() => setVisible(!visible)}>
+                                {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+                              </div>
+                            </InputGroupText> */}
+                          {/* </InputGroupAddon> */}
+                        </InputGroup>
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  {/* <Row>
+                    <Col className="pr-1" md="11"> */}
+                      {/* <FormGroup> */}
+                      {/* <label  >Street Number</label> */}
+                      {/* <Input type="text" id="userType"  */}
+                      {/* <select className="custom-select"
+                        value={userType}
+
+                        onChange={(e) => {
+                          const selectedType = e.target.value;
+                          setUserType(selectedType);
+                        }}
+                      >
+                        <option value="Patient" >Patient</option>
+                        <option value="Doctor" disabled>Doctor (Disabled)</option>
+                        <option value="Pharmacist" disabled>Pharmacist (Disabled)</option>
+                        <option value="Receptionist" disabled>Receptionist (Disabled)</option>
+                        <option value="Administrator" disabled>Administrator (Disabled)</option>
+                      </select> */}
+                      {/* </FormGroup> */}
+                    {/* </Col>
+                    
+                  </Row> */}
+                  <Col className="pr-1" md="11">
+                      <FormGroup>
+                        <label >
+                          Street Name
+                        </label>
+                        <Input type="text" id="text"
+                          value={email}
+                          onChange={(event) => {
+                            setEmail(event.target.value);
+                          }}
+                        />
+                      </FormGroup>
+                      </Col>
+                      <Col className="pr-1" md="11">
+                      <FormGroup>
+                        <label >
+                          City
+                        </label>
+                        <Input type="text" id="text"
+                          value={email}
+                          onChange={(event) => {
+                            setEmail(event.target.value);
+                          }}
+                        />
+                      </FormGroup>
+                      </Col>
+                      <Col className="pr-1" md="11">
+                      <FormGroup>
+                        <label >
+                          Province
+                        </label>
+                        <Input type="text" id="text"
+                          value={email}
+                          onChange={(event) => {
+                            setEmail(event.target.value);
+                          }}
+                        />
+                      </FormGroup>
+                      </Col>
+                      <Col className="pr-1" md="11">
+                      <FormGroup>
+                        <label >
+                          Patient Medical Information
+                        </label>
+                        <Input type="text" id="text"
+                          value={email}
+                          onChange={(event) => {
+                            setEmail(event.target.value);
+                          }}
+                        />
+                      </FormGroup>
+                      </Col>
+                </Form>
+              </CardBody>
+            </Card>
               </div>
             </Card>
           </Col>
