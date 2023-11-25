@@ -31,13 +31,13 @@ var dashRoutes = [
     component: < ManageUsers/>,
     layout: "/admin",
   },
-  // {
-  //   path: "/PatientList",
-  //   name: "Patient List",
-  //   icon: "files_paper",
-  //   component: <PatientList />,
-  //   layout: "/admin",
-  // },
+  {
+    path: "/PatientList",
+    name: "Patient List",
+    icon: "files_paper",
+    component: <PatientList />,
+    layout: "/admin",
+  },
   {
     path: "/PatientMedicalInformation",
     name: "Patient Medical Information",
