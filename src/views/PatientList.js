@@ -35,7 +35,7 @@ function RegularTables()
     // const [patientMedicalInformation, setPatientMedicalInformation] = useState("");
     const [patients, setPatients] = useState([]);
 
-    const thead = ["Patient ID", "Username", "Age", "Weight", "Height", "Street Number", "Street Name", "City", "Province", "Medical Record ID"];
+    const thead = ["Patient ID", "ID number", "Username", "Age", "Weight", "Height", "Street Number", "Street Name", "City", "Province", "Medical Record ID"];
 
     useEffect(() => {
       (async () => await Load())();
@@ -58,8 +58,8 @@ function RegularTables()
       {
 
           await axios.delete("http://localhost:8080/E-Health-System/patient/delete/" + patientId); 
-          alert("patient deleted Successfully");
-          Load();
+          alert("patient deleted Successfully"); 
+          Load(); 
       }
       catch(err)
       {
@@ -126,6 +126,7 @@ function RegularTables()
                 <tbody>
                     <tr>
                     <td>{patient.patientID}</td>
+                    <td>{patient.idNumber}</td>
                     <td>{patient.user.username}</td>
                     <td>{patient.age}</td>        
                     <td>{patient.weight}</td>   
@@ -134,7 +135,7 @@ function RegularTables()
                     <td>{patient.streetName}</td>  
                     <td>{patient.city}</td>  
                     <td>{patient.province}</td>  
-                    <td>{patient.patientMedicalInformation.medicalRecordID}</td>  
+                    <td>{patient.patientMedicalInformation.medicalRecordID}</td>
 
                     <td>
 

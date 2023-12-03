@@ -38,7 +38,7 @@ function RegularTables()
       async function  Load()
     {
        const result = await axios.get(
-           "http://localhost:8080/E-Health-System/patientMedicalInformation/all");
+           "http://localhost:8080/E-Health-System/patient/all");
            setPatientMedicalInformations(result.data);
            console.log(result.data);
     }
@@ -183,20 +183,20 @@ function RegularTables()
                   </thead>
 
 
-                  {patientMedicalInformations.map(function fn(patientMedicalInformation)
+                  {patientMedicalInformations.map(function fn(patient)
            {
                 return(
                 <tbody>
                     <tr>
-                    <td>{patientMedicalInformation.medicalRecordID}</td>
-                    <td>{patientMedicalInformation.medicalProblems}</td>
-                    <td>{patientMedicalInformation.prescription}</td>        
-                    <td>{patientMedicalInformation.medicalTestResults}</td>   
-                    <td>{patientMedicalInformation.allergies}</td>   
-                    <td>{patientMedicalInformation.chronicMedication}</td>
-                    <td>{patientMedicalInformation.immunisations}</td> 
-                    <td>{patientMedicalInformation.hospitalisations}</td> 
-                    <td>{patientMedicalInformation.folderNumber}</td>    
+                    <td>{patient.patientMedicalInformation.medicalRecordID}</td>
+                    <td>{patient.patientMedicalInformation.medicalProblems}</td>
+                    <td>{patient.patientMedicalInformation.prescription}</td>        
+                    <td>{patient.patientMedicalInformation.medicalTestResults}</td>   
+                    <td>{patient.patientMedicalInformation.allergies}</td>   
+                    <td>{patient.patientMedicalInformation.chronicMedication}</td>
+                    <td>{patient.patientMedicalInformation.immunisations}</td> 
+                    <td>{patient.patientMedicalInformation.hospitalisations}</td> 
+                    <td>{patient.patientMedicalInformation.folderNumber}</td>    
 
                     <td>
 
