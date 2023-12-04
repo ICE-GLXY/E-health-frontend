@@ -385,149 +385,73 @@ catch{
 }
 
   }
-  async function DeleteUser(event) {
-    event.preventDefault();
-    try {
-      alert("User deleted");
-      await axios.delete("http://localhost:8080/E-Health-System/patient/delete/" + searchId)
-        .then((res) => {
-          console.log(res.data);
-          setId("");
-          setName("");
-          setSName("");
-          setPassword("");
-          setCellPhoneNumber("");
-          setEmail("");
-          setUserType("");
 
-          setPId("");
-          setIDnum("")
-          setUser("");
-          setAge("");
-          setWeight("");
-          setHeight("");
-          setStreetNumber("");
-          setStreetName("");
-          setCity("");
-          setProvince("");
-          setPatientMedicalInformation("");
-
-          setMId("");
-          setMedicalProblems("");
-          setPrescription("");
-          setMedicalTestResults("");
-          setAllergies("");
-          setChronicMedication("");
-          setImmunisations("");
-          setHospitalisations("");
-          setFolderNumber("");
-
-          Load();
-        });
-    }
-    catch (err) {
-      alert("User delete Failed");
-    }
-
-
-
-    }
-   
-  
-    
-    //    async function save(event)
-    //   {
-    //       event.preventDefault();
-    //   try
-    //       {
-    //        await axios.post("http://localhost:8080/E-Health-System/patient/save",
-    //       {
-    //         patientID: patientID,
-    //         user: user,
-    //         age: age,
-    //         weight: weight,
-    //         height: height,
-    //         streetNumber: streetNumber,
-    //         streetName: streetName,
-    //         city: city,
-    //         province: province,
-    //         patientMedicalInformation: patientMedicalInformation
-    //       });
-    //         alert("user Registation Successfully");
-    //         setId("");
-    //         setUser("");
-    //         setAge("");
-    //         setWeight("");
-    //         setHeight("");
-    //         setStreetNumber("");
-    //         setStreetName("");
-    //         setCity("");
-    //         setProvince("");
-    //         setPatientMedicalInformation("");
-    //         Load();
-    //       }
-    //   catch(err)
-    //       {
-    //         alert("Failed to add patient");
-    //       }
-    //  }
-  
-   
-     async function DeletePatient(patientId)
+  async function DeletePatient(patientId)
      {
       try 
       {
 
           await axios.delete("http://localhost:8080/E-Health-System/patient/delete/" + patientId); 
-          alert("patient deleted Successfully");
-          Load();
+          alert("patient deleted Successfully"); 
+          Load(); 
       }
       catch(err)
       {
         alert("delete failed");
 
       }
-   
-    //  async function update(event)
-    //  {
-    //   event.preventDefault();
-   
-    //  try
-    //      {
-    //       await axios.put("localhost:8080/E-Health-System/patient/save"  ,
-    //      {
+     }
+  // async function DeletePatient(event) {
+  //   // event.preventDefault();
+  //   try {
+  //     alert("User deleted");
+  //     await axios.delete("http://localhost:8080/E-Health-System/patient/delete/" + patientId)
+  //       .then((res) => {
+  //         console.log(res.data);
+  //         setId("");
+  //         setName("");
+  //         setSName("");
+  //         setPassword("");
+  //         setCellPhoneNumber("");
+  //         setEmail("");
+  //         setUserType("");
+
+  //         setPId("");
+  //         setIDnum("")
+  //         setUser("");
+  //         setAge("");
+  //         setWeight("");
+  //         setHeight("");
+  //         setStreetNumber("");
+  //         setStreetName("");
+  //         setCity("");
+  //         setProvince("");
+  //         setPatientMedicalInformation("");
+
+  //         setMId("");
+  //         setMedicalProblems("");
+  //         setPrescription("");
+  //         setMedicalTestResults("");
+  //         setAllergies("");
+  //         setChronicMedication("");
+  //         setImmunisations("");
+  //         setHospitalisations("");
+  //         setFolderNumber("");
+
+  //         Load();
+  //       });
+  //   }
+  //   catch (err) {
+  //     alert("User delete Failed");
+  //   }
+
+
+
+  //   }
   
-    //       patientID: patientID,
-    //         user: user,
-    //         age: age,
-    //         weight: weight,
-    //         height: height,
-    //         streetNumber: streetNumber,
-    //         streetName: streetName,
-    //         city: city,
-    //         province: province,
-    //         patientMedicalInformation: patientMedicalInformation
-         
-    //      });
-    //        alert("Patient Updated");
-    //         setId("");
-    //         setUser("");
-    //         setAge("");
-    //         setWeight("");
-    //         setHeight("");
-    //         setStreetNumber("");
-    //         setStreetName("");
-    //         setCity("");
-    //         setProvince("");
-    //         setPatientMedicalInformation("");
-    //         Load();
-    //      }
-    //  catch(err)
-    //      {
-    //        alert("Failed to update patient");
-    //      }
-    // }
-  }
+  
+   
+
 
 
   return (
@@ -1020,7 +944,7 @@ catch{
 
                   <hr />
                   <button type="Update" class="btn btn-danger" onClick={save}> Save </button>
-                  {/* <button type="button" class="btn btn-danger" onClick={DeletePatient(patients.patientID)} >Delete</button> */}
+                  <button type="button" class="btn btn-danger" onClick={() => DeletePatient(searchId)}>Delete</button>
 
                 </div>
               </CardBody>
