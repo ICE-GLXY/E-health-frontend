@@ -7,6 +7,7 @@ import UserList from "views/UserList.js";
 import PatientList from "views/PatientList.js";
 import Upgrade from "views/Upgrade.js";
 import ManageUsers from "views/ManageUsers.js";
+import ViewUser from "views/ViewUser.js";
 import MedicalFacility from "views/MedicalFacility.js"
 
 var dashRoutes = [
@@ -68,8 +69,8 @@ var dashRoutes = [
     layout: "/admin",
   },
   {
-    path: "/PatientList/:patientID",
-    component: <ManageUsers />,
+    path: "/ViewUser/:patientID",
+    component: <ViewUser />,
   },
 ];
 export default dashRoutes;

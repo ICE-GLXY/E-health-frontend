@@ -143,7 +143,7 @@ function RegularTables()
                     <div key={patient.patientID}>
             <Link
               to={{
-                pathname: `/admin/PatientList/${patient.patientID}`,
+                pathname: `/admin/ViewUser/${patient.patientID}`,
                 state: { patients: patient }
               }}
               >
