@@ -24,11 +24,15 @@ function RegularTables()
 {
     const [username, setId] = useState('');
     const [name, setName] = useState("");
+    const [surname, setSName] = useState("");
     const [password, setPassword] = useState("");
     const [cellPhoneNumber, setCellPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
     const [userType, setUserType] = useState("");
     const [users, setUsers] = useState([]);
+
+    const thead = ["User", "Name", "Surname", "Password", "Phone Number","Email","User Type"];
+
 
     useEffect(() => {
       (async () => await Load())();
@@ -38,7 +42,7 @@ function RegularTables()
       async function  Load()
     {
        const result = await axios.get(
-           "http://localhost:8080/E-Health-System/User/all");
+           "http://localhost:8080/E-Health-System/patient/all");
            setUsers(result.data);
            console.log(result.data);
     }
@@ -54,6 +58,7 @@ function RegularTables()
           {
             username: username,
             name: name,
+            surname:surname,
             password: password,
             cellPhoneNumber: cellPhoneNumber,
             email: email,
@@ -167,17 +172,18 @@ function RegularTables()
                   </thead>
 
 
-                  {users.map(function fn(User)
+                  {users.map(function fn(patient)
            {
                 return(
                 <tbody>
                     <tr>
-                    <td>{User.username}</td>
-                    <td>{User.name}</td>
-                    <td>{User.password}</td>        
-                    <td>{User.cellPhoneNumber}</td>   
-                    <td>{User.email}</td>   
-                    <td>{User.userType}</td>   
+                    <td>{patient.user.username}</td>
+                    <td>{patient.user.name}</td>
+                    <td>{patient.user.surname}</td>
+                    <td>{patient.user.password}</td>        
+                    <td>{patient.user.cellPhoneNumber}</td>   
+                    <td>{patient.user.email}</td>   
+                    <td>{patient.user.userType}</td>   
 
                     <td>
 

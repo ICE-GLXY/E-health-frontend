@@ -23,12 +23,15 @@ import axios from 'axios';
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 
+
+
 function User() {
 
   // User const
 
   const [username, setId] = useState('');
   const [name, setName] = useState("");
+  const [surname, setSName] = useState("");
   const [password, setPassword] = useState("");
   const [cellPhoneNumber, setCellPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
@@ -41,6 +44,7 @@ function User() {
 
   //Patient const
     const [patientID, setPId] = useState('');
+    const[idNumber, setIDnum] = useState("");
     // const [searchId, setSearchId] = useState('');
     const [user, setUser] = useState("");
     const [age, setAge] = useState("");
@@ -66,9 +70,31 @@ function User() {
     const [folderNumber, setFolderNumber] = useState("");
 
 
+    const [cardVisible, setCardVisible] = useState(false);
+
+    // const handleUserTypeChange = (e) => {
+    //   const selectedType = e.target.value;
+    //   setUserType(selectedType);
+  
+    //   // Set the visibility of the card based on the selected user type
+    //   setCardVisible(selectedType === 'patient');
+    // };
+
+    
   useEffect(() => {
     (async () => await Load())();
   }, []);
+
+function showPatient(){
+  if (userType.trim() === 'patient') {
+    setCardVisible(true)
+    return;
+  }
+  else 
+  setCardVisible(false)
+return;
+
+}
 
 
   async function Load() {
@@ -76,28 +102,38 @@ function User() {
       "http://localhost:8080/E-Health-System/patient/all");
       setPatients(result.data);
     console.log(result.data);
+
+
   }
 
   //search function
   async function search(event) {
     event.preventDefault();
 
+   
+
     try {
       await axios.get("http://localhost:8080/E-Health-System/patient/read/" + searchId)
       // await axios.get("http://localhost:8080/E-Health-System/User/read/" + searchId)
         .then((res) => {
           console.log(res.data);
+          
         
           setId(res.data.user.username);
           setName(res.data.user.name);
+          setSName(res.data.user.surname);
           setPassword(res.data.user.password);
           setCellPhoneNumber(res.data.user.cellPhoneNumber);
           setEmail(res.data.user.email);
           setUserType(res.data.user.userType);
+          
+
+
           // setUserType(res.data.userType);
 
 
           setPId(res.data.patientID);
+          setIDnum(res.data.idNumber);
           //leave user in?
           setUser(res.data.user.username);
 
@@ -124,6 +160,7 @@ function User() {
           setHospitalisations(res.data.patientMedicalInformation.hospitalisations);
           setFolderNumber(res.data.patientMedicalInformation.folderNumber);
           
+          
         });
     }
     catch (err) {
@@ -133,70 +170,35 @@ function User() {
 
   async function save(event) {
     event.preventDefault();
-    try {
-      await axios.post("http://localhost:8080/E-Health-System/User/save",
-        {
-          username: username,
-          name: name,
-          password: password,
-          cellPhoneNumber: cellPhoneNumber,
-          email: email,
-          userType: userType
-        });
-      alert("User Saved Successfully");
-      setId("");
-      setName("");
-      setPassword("");
-      setCellPhoneNumber("");
-      setEmail("");
-      setUserType("");
-      Load();
-    }
-    catch (err) {
-      alert("User Saving Failed");
-    }
-  }
 
-  async function DeleteUser(event) {
-    event.preventDefault();
-    try {
-      alert("User deleted");
-      await axios.delete("http://localhost:8080/E-Health-System/User/delete/" + searchId)
-        .then((res) => {
-          console.log(res.data);
-          setId("");
-          setName("");
-          setPassword("");
-          setCellPhoneNumber("");
-          setEmail("");
-          setUserType("");
-          Load();
-        });
+    //validations
+    if (username.trim() === '') {
+      alert('Username cannot be blank');
+      return;
     }
-    catch (err) {
-      alert("User delete Failed");
-    }
-
-
-      //Patient GET (not used?)
-
-           const result = await axios.get(
-           "http://localhost:8080/E-Health-System/patient/all");
-           setPatients(result.data);
-           console.log(result.data);
-    }
-   
-  
     
-       async function save(event)
-      {
-          event.preventDefault();
-      try
-          {
-           await axios.post("http://localhost:8080/E-Health-System/patient/save",
-          {
-            patientID: patientID,
-            user: user,
+    if (patientID.trim() === '') {
+      alert('patientID cannot be blank');
+      return;
+    }
+
+
+    try {
+      
+      await axios.post("http://localhost:8080/E-Health-System/patient/save",
+        {
+          user:{
+            username: username,
+            name: name,
+            surname, surname,
+            password: password,
+            cellPhoneNumber: cellPhoneNumber,
+            email: email,
+            userType: userType
+          },
+
+            patientID:patientID,
+            idNumber:idNumber,
             age: age,
             weight: weight,
             height: height,
@@ -204,10 +206,31 @@ function User() {
             streetName: streetName,
             city: city,
             province: province,
-            patientMedicalInformation: patientMedicalInformation
-          });
-            alert("user Registation Successfully");
+
+            patientMedicalInformation:{
+            medicalRecordID:medicalRecordID,
+            medicalTestResults: medicalTestResults,
+            folderNumber: folderNumber,
+            chronicMedication: chronicMedication,
+            hospitalisations: hospitalisations,
+            allergies: allergies,
+            medicalProblems: medicalProblems,
+            immunisations: immunisations,
+            prescription: prescription,
+            },
+          
+        });
+            alert("User Saved Successfully");
             setId("");
+            setName("");
+            setSName("");
+            setPassword("");
+            setCellPhoneNumber("");
+            setEmail("");
+            setUserType("");
+
+            setPId("");
+            setIDnum("")
             setUser("");
             setAge("");
             setWeight("");
@@ -217,13 +240,154 @@ function User() {
             setCity("");
             setProvince("");
             setPatientMedicalInformation("");
-            Load();
-          }
-      catch(err)
-          {
-            alert("Failed to add patient");
-          }
-     }
+
+            setMId("");
+            setMedicalProblems("");
+            setPrescription("");
+            setMedicalTestResults("");
+            setAllergies("");
+            setChronicMedication("");
+            setImmunisations("");
+            setHospitalisations("");
+            setFolderNumber("");
+
+      Load();
+    }
+    catch (err) {
+      alert("User Saving Failed");
+    }
+  }
+
+  async function ClearPatient(event){
+    event.preventDefault();
+try{
+
+  alert("All fields have been cleared");
+  
+  setSearchId("")
+
+  setId("");
+  setName("");
+  setSName("");
+  setPassword("");
+  setCellPhoneNumber("");
+  setEmail("");
+  setUserType("");
+
+  setPId("");
+  setIDnum("")
+  setUser("");
+  setAge("");
+  setWeight("");
+  setHeight("");
+  setStreetNumber("");
+  setStreetName("");
+  setCity("");
+  setProvince("");
+  setPatientMedicalInformation("");
+
+  setMId("");
+  setMedicalProblems("");
+  setPrescription("");
+  setMedicalTestResults("");
+  setAllergies("");
+  setChronicMedication("");
+  setImmunisations("");
+  setHospitalisations("");
+  setFolderNumber("");
+}
+catch{
+  alert("Clear failed");
+
+}
+
+  }
+  async function DeleteUser(event) {
+    event.preventDefault();
+    try {
+      alert("User deleted");
+      await axios.delete("http://localhost:8080/E-Health-System/patient/delete/" + searchId)
+        .then((res) => {
+          console.log(res.data);
+          setId("");
+          setName("");
+          setSName("");
+          setPassword("");
+          setCellPhoneNumber("");
+          setEmail("");
+          setUserType("");
+
+          setPId("");
+          setIDnum("")
+          setUser("");
+          setAge("");
+          setWeight("");
+          setHeight("");
+          setStreetNumber("");
+          setStreetName("");
+          setCity("");
+          setProvince("");
+          setPatientMedicalInformation("");
+
+          setMId("");
+          setMedicalProblems("");
+          setPrescription("");
+          setMedicalTestResults("");
+          setAllergies("");
+          setChronicMedication("");
+          setImmunisations("");
+          setHospitalisations("");
+          setFolderNumber("");
+
+          Load();
+        });
+    }
+    catch (err) {
+      alert("User delete Failed");
+    }
+
+
+
+    }
+   
+  
+    
+    //    async function save(event)
+    //   {
+    //       event.preventDefault();
+    //   try
+    //       {
+    //        await axios.post("http://localhost:8080/E-Health-System/patient/save",
+    //       {
+    //         patientID: patientID,
+    //         user: user,
+    //         age: age,
+    //         weight: weight,
+    //         height: height,
+    //         streetNumber: streetNumber,
+    //         streetName: streetName,
+    //         city: city,
+    //         province: province,
+    //         patientMedicalInformation: patientMedicalInformation
+    //       });
+    //         alert("user Registation Successfully");
+    //         setId("");
+    //         setUser("");
+    //         setAge("");
+    //         setWeight("");
+    //         setHeight("");
+    //         setStreetNumber("");
+    //         setStreetName("");
+    //         setCity("");
+    //         setProvince("");
+    //         setPatientMedicalInformation("");
+    //         Load();
+    //       }
+    //   catch(err)
+    //       {
+    //         alert("Failed to add patient");
+    //       }
+    //  }
   
    
      async function DeletePatient(patientId)
@@ -237,49 +401,49 @@ function User() {
       }
       catch(err)
       {
-        // alert("delete failed");
+        alert("delete failed");
 
       }
    
-     async function update(event)
-     {
-      event.preventDefault();
+    //  async function update(event)
+    //  {
+    //   event.preventDefault();
    
-     try
-         {
-          await axios.put("localhost:8080/E-Health-System/patient/save"  ,
-         {
+    //  try
+    //      {
+    //       await axios.put("localhost:8080/E-Health-System/patient/save"  ,
+    //      {
   
-          patientID: patientID,
-            user: user,
-            age: age,
-            weight: weight,
-            height: height,
-            streetNumber: streetNumber,
-            streetName: streetName,
-            city: city,
-            province: province,
-            patientMedicalInformation: patientMedicalInformation
+    //       patientID: patientID,
+    //         user: user,
+    //         age: age,
+    //         weight: weight,
+    //         height: height,
+    //         streetNumber: streetNumber,
+    //         streetName: streetName,
+    //         city: city,
+    //         province: province,
+    //         patientMedicalInformation: patientMedicalInformation
          
-         });
-           alert("Patient Updated");
-            setId("");
-            setUser("");
-            setAge("");
-            setWeight("");
-            setHeight("");
-            setStreetNumber("");
-            setStreetName("");
-            setCity("");
-            setProvince("");
-            setPatientMedicalInformation("");
-            Load();
-         }
-     catch(err)
-         {
-           alert("Failed to update patient");
-         }
-    }
+    //      });
+    //        alert("Patient Updated");
+    //         setId("");
+    //         setUser("");
+    //         setAge("");
+    //         setWeight("");
+    //         setHeight("");
+    //         setStreetNumber("");
+    //         setStreetName("");
+    //         setCity("");
+    //         setProvince("");
+    //         setPatientMedicalInformation("");
+    //         Load();
+    //      }
+    //  catch(err)
+    //      {
+    //        alert("Failed to update patient");
+    //      }
+    // }
   }
 
 
@@ -291,7 +455,7 @@ function User() {
           <Col md="8">
             <Card>
               <CardHeader>
-                <h5 className="title text-center">User Creation</h5>
+                <h5 className="title text-center">Create or Edit a User</h5>
                 <hr />
               </CardHeader>
               <CardBody>
@@ -301,19 +465,47 @@ function User() {
                       {/* row 1 */}
                       <FormGroup>
                         <label>Username</label>
-                        <Input type="text" id="username"
+                        <Input type="text" id="username" required maxlength = "30"
+
                           value={username}
                           onChange={(event) => {
                             setId(event.target.value);
+                            setUser(event.target.value);
+                            
+                          }}
+                        />
+                      </FormGroup>
+                      <Row>
+                    <Col className="pr-1" md="11">
+                      <FormGroup>
+                        <label>Name </label>
+                        <Input type="text" id="name"
+                          value={name}
+                          onChange={(event) => {
+                            setName(event.target.value);
                           }}
                         />
                       </FormGroup>
                     </Col>
                     <Col className="pr-1" md="11">
                       <FormGroup>
+                        <label>Surname</label>
+                        <Input type="text" id="surname"
+                          value={surname}
+                          onChange={(event) => {
+                            setSName(event.target.value);
+                          }}
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                    </Col>
+                    <Col className="pr-1" md="11">
+                      <FormGroup>
                         {/* row 2 col 1 */}
                         <label>Phone Number</label>
-                        <Input type="text" id="cellPhoneNumber"
+                        <Input type="text" id="cellPhoneNumber"  maxlength = "12"
+
                           value={cellPhoneNumber}
                           onChange={(event) => {
                             setCellPhoneNumber(event.target.value);
@@ -335,20 +527,7 @@ function User() {
                       </FormGroup>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col className="pr-1" md="11">
-                      <FormGroup>
-                        {/* row 2 col 1 */}
-                        <label>Name and Surname</label>
-                        <Input type="text" id="name"
-                          value={name}
-                          onChange={(event) => {
-                            setName(event.target.value);
-                          }}
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
+                 
                   <Row>
                     <Col className="pr-1" md="11">
                       <FormGroup>
@@ -378,10 +557,15 @@ function User() {
                       {/* <Input type="text" id="userType"  */}
                       <select className="custom-select"
                         value={userType}
+                        
+                     
 
                         onChange={(e) => {
+                          
                           const selectedType = e.target.value;
                           setUserType(selectedType);
+                          setCardVisible(selectedType === 'patient');
+
                         }}
                       >
                         <option value=""></option>
@@ -400,6 +584,9 @@ function User() {
 
 {/* CHANGE INPUT ID AND VALUE */}
              {/* Patient creation */}
+
+             {cardVisible && (
+
              <div className="author">
               <Card>
               <CardHeader>
@@ -422,13 +609,27 @@ function User() {
                       </FormGroup>
                     </Col>
                     <Col className="pr-1" md="11">
+                      {/* row 1 */}
+                      <FormGroup>
+                        <label>ID Number</label>
+                        <Input type="text" id="idNumber" maxlength = "13"
+                          value={idNumber}
+                          onChange={(event) => {
+                            setIDnum(event.target.value);
+                          }}
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>User</label>
+                        <label>Username</label>
                         <Input type="text" id="user"
                           value={user}
                           onChange={(event) => {
                             setUser(event.target.value);
+                            setId(event.target.value);
+
                           }} 
                         />
                       </FormGroup>
@@ -535,12 +736,14 @@ function User() {
                       <Col className="pr-1" md="11">
                       <FormGroup>
                         <label >
-                          Patient Medical Information
+                        Medical Record ID
                         </label>
                         <Input type="text" id="patientMedicalInformation"
                           value={patientMedicalInformation}
                           onChange={(event) => {
                             setPatientMedicalInformation(event.target.value);
+                            setMId(event.target.value);
+
                           }}
                         />
                       </FormGroup>
@@ -549,8 +752,10 @@ function User() {
               </CardBody>
             </Card>
               </div>
+             )}
 
           {/* patientMedicalInformation */}
+          {cardVisible && (
           <div className="author">
               <Card>
               <CardHeader>
@@ -568,6 +773,8 @@ function User() {
                           value={medicalRecordID}
                           onChange={(event) => {
                             setMId(event.target.value);
+                            setPatientMedicalInformation(event.target.value);
+
                           }}
                         />
                       </FormGroup>
@@ -686,14 +893,14 @@ function User() {
               </CardBody>
             </Card>
               </div>                
-
+)}
 
           </Col>
           {/* Right card in Manage Users */}
           <Col md="4"  >
             <Card className="card-user">
               <CardHeader>
-                <h5 className="title text-center"  >Search</h5>
+                <h5 className="title text-center"  >Find a User</h5>
                 <hr />
               </CardHeader>
               {/* <div className="image"> */}
@@ -702,10 +909,13 @@ function User() {
                 <form>
                   <InputGroup className="no-border">
                     {/* <Input placeholder="username..." /> */}
-                    <Input placeholder="Patient ID..." type="text" id="username"
+                    <Input placeholder="Patient ID..." type="text" id="Searchusername"
                       value={searchId}
                       onChange={(event) => {
                         setSearchId(event.target.value);
+                        
+                       
+
                         //  setId(event.target.value);
                       }}
                     />
@@ -722,13 +932,17 @@ function User() {
                 <br />
                 <br />
                 <div className="author" >
-                  <button type="Update" class="btn btn-danger" onClick={search}>Search</button>
-                  <button type="Update" class="btn btn-danger" onClick={save}>Save</button>
-                  <button type="button" class="btn btn-danger" onClick={DeleteUser}>Delete</button>
+                  <button type="Update" class="btn btn-danger" onMouseLeave={showPatient} onClick={search}>Search</button>
+                  <button type="button" class="btn btn-danger" onMouseLeave={showPatient} onClick={ClearPatient}>Clear All</button>
+
                   <hr />
+                  <button type="Update" class="btn btn-danger" onClick={save}> Save </button>
+                  <button type="button" class="btn btn-danger" onClick={DeletePatient(patient.patientID)} >Delete</button>
+
                 </div>
               </CardBody>
             </Card>
+            
 
  
 
