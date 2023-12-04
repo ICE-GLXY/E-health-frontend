@@ -67,5 +67,9 @@ var dashRoutes = [
     component: <QrCode />,
     layout: "/admin",
   },
+  {
+    path: "/PatientList/:patientID",
+    component: <ManageUsers />,
+  },
 ];
 export default dashRoutes;
