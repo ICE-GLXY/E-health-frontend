@@ -1,4 +1,7 @@
 import React from "react";
+import QRCode from 'qrcode';
+import {Grid} from '@material-ui/core';
+import QrReader from 'modern-react-qr-reader';
 
 // reactstrap components
 import {
@@ -21,11 +24,36 @@ import {
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
 import axios from 'axios';
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef} from "react";
 
 
 
 function User() {
+
+  // QR 
+  const qrRef = useRef();
+  const [ResultFile, setResultFile] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const generateQrCode = async () => {
+    try {
+          const response = await QRCode.toDataURL(patients);
+          setImageUrl(response);
+    }catch (error) {
+      console.log(error);
+    }
+  }
+  const openDialog = () => {
+    qrRef.current.openImageDialog();
+  }
+  const handleErrorFile = (error) => {
+    console.log(error);
+  }
+  const fileScan = (result) => {
+    if (result) {
+        setResultFile(result);
+    }
+}
+
 
   // User const
 
@@ -160,6 +188,61 @@ return;
           setHospitalisations(res.data.patientMedicalInformation.hospitalisations);
           setFolderNumber(res.data.patientMedicalInformation.folderNumber);
           
+          
+          setPatients(res.data.patientID);
+        });
+    }
+    catch (err) {
+      alert("User search Failed");
+    }
+  }
+
+  async function searchQR(event) {
+    event.preventDefault();
+
+    try {
+      await axios.get("http://localhost:8080/E-Health-System/patient/read/" + ResultFile)
+      // await axios.get("http://localhost:8080/E-Health-System/User/read/" + searchId)
+        .then((res) => {
+          console.log(res.data);
+        
+          setId(res.data.user.username);
+          setName(res.data.user.name);
+          setPassword(res.data.user.password);
+          setCellPhoneNumber(res.data.user.cellPhoneNumber);
+          setEmail(res.data.user.email);
+          setUserType(res.data.user.userType);
+          // setUserType(res.data.userType);
+
+
+          setPId(res.data.patientID);
+          //leave user in?
+          setUser(res.data.user.username);
+
+          setAge(res.data.age);
+          setWeight(res.data.weight);
+          setHeight(res.data.height);
+          setStreetNumber(res.data.streetNumber);
+          setStreetName(res.data.streetName);
+          setCity(res.data.city);
+          setProvince(res.data.province);
+          
+          //leave Patient Med Info Id in?
+
+          setPatientMedicalInformation(res.data.patientMedicalInformation.medicalRecordID);
+
+
+          setMId(res.data.patientMedicalInformation.medicalRecordID);
+          setMedicalProblems(res.data.patientMedicalInformation.medicalProblems);
+          setPrescription(res.data.patientMedicalInformation.prescription);
+          setMedicalTestResults(res.data.patientMedicalInformation.medicalTestResults);
+          setAllergies(res.data.patientMedicalInformation.allergies);
+          setChronicMedication(res.data.patientMedicalInformation.chronicMedication)
+          setImmunisations(res.data.patientMedicalInformation.immunisations);
+          setHospitalisations(res.data.patientMedicalInformation.hospitalisations);
+          setFolderNumber(res.data.patientMedicalInformation.folderNumber);
+
+          setPatients(res.data.patientID);
           
         });
     }
@@ -937,13 +1020,57 @@ catch{
 
                   <hr />
                   <button type="Update" class="btn btn-danger" onClick={save}> Save </button>
-                  <button type="button" class="btn btn-danger" onClick={DeletePatient(patient.patientID)} >Delete</button>
+                  {/* <button type="button" class="btn btn-danger" onClick={DeletePatient(patients.patientID)} >Delete</button> */}
 
                 </div>
               </CardBody>
             </Card>
             
+            <Card className="card-user">
+              <CardHeader>
+                <h5 className="title text-center"  >QR Search</h5>
+                <hr />
+              </CardHeader>
+              {/* <div className="image"> */}
 
+              <CardBody>
+                <form>
+
+                </form>
+                {/* </div> */}
+                <br />
+                <br />
+                <br />
+                <br />
+                <div className="author" >
+                  <button class="btn btn-danger" variant="contained" 
+                            color="primary" onClick={() => generateQrCode()}>Generate</button>
+                            <br/>
+                            {imageUrl ? (
+                              <a href={imageUrl} download>
+                                  <img src={imageUrl} alt="img"/>
+                              </a>) : null}
+                  <hr />
+                
+
+
+              <button class="btn btn-danger" variant="contained" color="primary" onClick={openDialog}>Upload Qr Code</button>
+              <button type="Update" class="btn btn-danger" onMouseLeave={showPatient} onClick={searchQR}>searchQR</button>
+                        <QrReader
+                          ref={qrRef}
+                          delay={100}
+                          style={{ 
+                          height: "30%"} }
+                          onError={handleErrorFile}
+                          onScan={fileScan}
+                          legacyMode={true}
+                        />
+                         {/* <h3>Scanned Code: {ResultFile}</h3> */}
+                         {/* {ResultFile} */}
+                         <hr />
+                         </div>
+              </CardBody>
+            </Card>
  
 
 

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 // reactstrap components
 import {
@@ -139,6 +140,18 @@ function RegularTables()
 
                     <td>
 
+                    <div key={patient.patientID}>
+            <Link
+              to={{
+                pathname: `/admin/ViewUser/${patient.patientID}`,
+                state: { patients: patient }
+              }}
+              >
+              <button type="button" class="btn btn-danger">View</button>
+            </Link>
+          </div>
+</td>
+<td>
                         <button type="button" class="btn btn-danger" onClick={() => DeletePatient(patient.patientId)}>Delete</button>
                     </td>
                     </tr>
