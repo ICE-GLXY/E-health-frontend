@@ -139,7 +139,7 @@ function RegularTables()
 
                     <td>
 
-                        <button type="button" class="btn btn-danger" onClick={() => DeletePatient(patient.patientID)}>Delete</button>
+                        <button type="button" class="btn btn-danger" onClick={() => DeletePatient(patient.patientId)}>Delete</button>
                     </td>
                     </tr>
                 </tbody>

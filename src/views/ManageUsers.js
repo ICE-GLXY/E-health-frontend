@@ -455,7 +455,7 @@ catch{
           <Col md="8">
             <Card>
               <CardHeader>
-                <h5 className="title text-center">User Creation</h5>
+                <h5 className="title text-center">Create or Edit a User</h5>
                 <hr />
               </CardHeader>
               <CardBody>
@@ -900,7 +900,7 @@ catch{
           <Col md="4"  >
             <Card className="card-user">
               <CardHeader>
-                <h5 className="title text-center"  >Search</h5>
+                <h5 className="title text-center"  >Find a User</h5>
                 <hr />
               </CardHeader>
               {/* <div className="image"> */}
@@ -937,7 +937,7 @@ catch{
 
                   <hr />
                   <button type="Update" class="btn btn-danger" onClick={save}> Save </button>
-                  <button type="button" class="btn btn-danger" onClick={DeletePatient} >Delete</button>
+                  <button type="button" class="btn btn-danger" onClick={DeletePatient(patient.patientID)} >Delete</button>
 
                 </div>
               </CardBody>
