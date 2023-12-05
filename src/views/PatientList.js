@@ -15,7 +15,6 @@ import {
 // core components
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
 
-import { thead, tbody } from "variables/general";
 import axios from 'axios';
 import {useEffect, useState } from "react";
 

@@ -14,7 +14,6 @@ import {
 // core components
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
 import axios from 'axios';
-import { thead, tbody } from "variables/general";
 import {useEffect, useState } from "react";
 function RegularTables() 
 {

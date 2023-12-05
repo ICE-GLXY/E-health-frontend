@@ -7,8 +7,25 @@ function Footer(props) {
   return (
     <footer className={"footer" + (props.default ? " footer-default" : "")}>
       <Container fluid={props.fluid ? true : false}>
-        <div className="copyright">
+      <nav>
+          <ul>
+            <li>
+        
+        &copy; {1900 + new Date().getYear()} {" "}
+          <a
+            href="https://www.invisionapp.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Disclaimer
+          </a>
+          </li>
+          </ul>
+          </nav>
+          <div className="copyright">
+          <a>
             Coded by Taariq & Zaeem.
+          </a>
         </div>
       </Container>
     </footer>
