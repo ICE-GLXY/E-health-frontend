@@ -2,7 +2,6 @@ import React from "react";
 import QRCode from 'qrcode';
 import {Grid} from '@material-ui/core';
 import QrReader from 'modern-react-qr-reader';
-
 // reactstrap components
 import {
   Button,
@@ -34,6 +33,7 @@ function User() {
   const qrRef = useRef();
   const [ResultFile, setResultFile] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [scanResultWebCam, setScanResultWebCam] =  useState('');
   const generateQrCode = async () => {
     try {
           const response = await QRCode.toDataURL(patients);
@@ -53,7 +53,14 @@ function User() {
         setResultFile(result);
     }
 }
-
+const handleErrorWebCam = (error) => {
+  console.log(error);
+}
+const handleScanWebCam = (result) => {
+  if (result){
+    setResultFile(result);
+  }
+ }
 
   // User const
 
@@ -958,9 +965,6 @@ catch{
               {/* <div className="image"> */}
 
               <CardBody>
-                <form>
-
-                </form>
                 {/* </div> */}
                 <br />
                 <br />
@@ -975,31 +979,29 @@ catch{
                                   <img src={imageUrl} alt="img"/>
                               </a>) : null}
                   <hr />
-                
-
-
-              <button class="btn btn-danger" variant="contained" color="primary" onClick={openDialog}>Upload Qr Code</button>
-              <button type="Update" class="btn btn-danger" onMouseLeave={showPatient} onClick={searchQR}>searchQR</button>
+              <button class="btn btn-danger" variant="contained" color="primary" onClick={openDialog}>Upload QR Code</button>
+              <button type="Update" class="btn btn-danger" onMouseLeave={showPatient} onClick={searchQR}>search QR ID</button>
+              <h6>QR ID:  {ResultFile}</h6>
+              </div>
+              <div>
                         <QrReader
                           ref={qrRef}
                           delay={100}
-                          style={{ 
-                          height: "30%"} }
+                          style={{alignItems: "center",width: "30%"}}
                           onError={handleErrorFile}
                           onScan={fileScan}
                           legacyMode={true}
                         />
-                         {/* <h3>Scanned Code: {ResultFile}</h3> */}
-                         {/* {ResultFile} */}
-                         <hr />
-                         </div>
+                          <QrReader
+                         delay={100}
+                         style={{alignItems: "center", width: '30%'}}
+                         onError={handleErrorWebCam}
+                         onScan={handleScanWebCam}
+                         />
+                        </div>
+                        <hr />      
               </CardBody>
             </Card>
- 
-
-
-
-            
           </Col>
         </Row>
       </div>
