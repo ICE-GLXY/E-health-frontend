@@ -121,6 +121,7 @@ function DemoNavbar(props) {
           <span className="navbar-toggler-bar navbar-kebab" />
           <span className="navbar-toggler-bar navbar-kebab" />
         </NavbarToggler>
+        <h2 style={{textAlignVertical: "center",textAlign: "center",}}> E-Health Managament System </h2>
         <Collapse isOpen={isOpen} navbar className="justify-content-end">
           {/* <form>
             <InputGroup className="no-border">
