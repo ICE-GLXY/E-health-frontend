@@ -182,7 +182,7 @@ function ViewUser(){
         <div className="content">
           <Row>
             <Col md="8">
-              <Card>
+            <Card style={{width: '70rem'}}>
                 <CardHeader>
                   <h5 className="title text-center">User {param.patientID} Information</h5>
                   <hr />
@@ -194,7 +194,7 @@ function ViewUser(){
                         {/* row 1 */}
                         <FormGroup>
                           <label>Username</label>
-                          <Input type="text" id="username"
+                          <Input type="text" id="username" disabled
                             value={username}
                             onChange={(event) => {
                               setId(event.target.value);
@@ -206,7 +206,7 @@ function ViewUser(){
                         <FormGroup>
                           {/* row 2 col 1 */}
                           <label>Phone Number</label>
-                          <Input type="text" id="cellPhoneNumber"
+                          <Input type="text" id="cellPhoneNumber" disabled
                             value={cellPhoneNumber}
                             onChange={(event) => {
                               setCellPhoneNumber(event.target.value);
@@ -219,7 +219,7 @@ function ViewUser(){
                           <label htmlFor="exampleInputEmail1">
                             Email address
                           </label>
-                          <Input type="text" id="email"
+                          <Input type="text" id="email" disabled
                             value={email}
                             onChange={(event) => {
                               setEmail(event.target.value);
@@ -233,7 +233,7 @@ function ViewUser(){
                         <FormGroup>
                           {/* row 2 col 1 */}
                           <label>Name and Surname</label>
-                          <Input type="text" id="name"
+                          <Input type="text" id="name" disabled
                             value={name}
                             onChange={(event) => {
                               setName(event.target.value);
@@ -247,7 +247,7 @@ function ViewUser(){
                         <FormGroup>
                           <label>Password</label>
                           <InputGroup >
-                            <Input type={visible ? "text" : "password"} id="password"
+                            <Input type={visible ? "text" : "password"} id="password" disabled
                               value={password}
                               onChange={(event) => {
                                 setPassword(event.target.value);
@@ -268,8 +268,9 @@ function ViewUser(){
                       <Col className="pr-1" md="11">
                         {/* <FormGroup> */}
                         <label  >User Type</label>
+                        <br/>
                         {/* <Input type="text" id="userType"  */}
-                        <select className="custom-select"
+                        <select className="custom-select" md="11" disabled
                           value={userType}
   
                           onChange={(e) => {
@@ -294,9 +295,9 @@ function ViewUser(){
   {/* CHANGE INPUT ID AND VALUE */}
                {/* Patient creation */}
                <div className="author">
-                <Card>
+               <Card style={{width: '70rem'}}>
                 <CardHeader>
-                  <h5 className="title text-center">Add Patient Details</h5>
+                  <h5 className="title text-center">Patient Details</h5>
                   <hr />
                 </CardHeader>
                 <CardBody>
@@ -306,7 +307,7 @@ function ViewUser(){
                         {/* row 1 */}
                         <FormGroup>
                           <label>Patient ID</label>
-                          <Input type="text" id="patientID"
+                          <Input type="text" id="patientID" disabled
                             value={patientID}
                             onChange={(event) => {
                               setPId(event.target.value);
@@ -318,7 +319,7 @@ function ViewUser(){
                         <FormGroup>
                           {/* row 2 col 1 */}
                           <label>User</label>
-                          <Input type="text" id="user"
+                          <Input type="text" id="user" disabled
                             value={user}
                             onChange={(event) => {
                               setUser(event.target.value);
@@ -331,7 +332,7 @@ function ViewUser(){
                           <label >
                             Age
                           </label>
-                          <Input type="text" id="age"
+                          <Input type="text" id="age" disabled
                             value={age}
                             onChange={(event) => {
                               setAge(event.target.value);
@@ -345,7 +346,7 @@ function ViewUser(){
                         <FormGroup>
                           {/* row 2 col 1 */}
                           <label>Weight</label>
-                          <Input type="text" id="weight"
+                          <Input type="text" id="weight" disabled
                             value={weight}
                             onChange={(event) => {
                               setWeight(event.target.value);
@@ -359,7 +360,7 @@ function ViewUser(){
                         <FormGroup>
                           <label>Height</label>
                           <InputGroup >
-                            <Input type="text" id="height"
+                            <Input type="text" id="height" disabled
                               value={height}
                               onChange={(event) => {
                                 setHeight(event.target.value);
@@ -375,7 +376,7 @@ function ViewUser(){
                           <label >
                             Street Number
                           </label>
-                          <Input type="text" id="streetNumber"
+                          <Input type="text" id="streetNumber" disabled
                             value={streetNumber}
                             onChange={(event) => {
                               setStreetNumber(event.target.value);
@@ -391,7 +392,7 @@ function ViewUser(){
                           <label >
                             Street Name
                           </label>
-                          <Input type="text" id="streetName"
+                          <Input type="text" id="streetName" disabled
                             value={streetName}
                             onChange={(event) => {
                               setStreetName(event.target.value);
@@ -404,7 +405,7 @@ function ViewUser(){
                           <label >
                             City
                           </label>
-                          <Input type="text" id="city"
+                          <Input type="text" id="city" disabled
                             value={city}
                             onChange={(event) => {
                               setCity(event.target.value);
@@ -417,7 +418,7 @@ function ViewUser(){
                           <label >
                             Province
                           </label>
-                          <Input type="text" id="province"
+                          <Input type="text" id="province" disabled
                             value={province}
                             onChange={(event) => {
                               setProvince(event.target.value);
@@ -430,7 +431,7 @@ function ViewUser(){
                           <label >
                             Patient Medical Information
                           </label>
-                          <Input type="text" id="patientMedicalInformation"
+                          <Input type="text" id="patientMedicalInformation" disabled
                             value={patientMedicalInformation}
                             onChange={(event) => {
                               setPatientMedicalInformation(event.target.value);
@@ -445,9 +446,9 @@ function ViewUser(){
   
             {/* patientMedicalInformation */}
             <div className="author">
-                <Card>
+            <Card style={{width: '70rem'}}>
                 <CardHeader>
-                  <h5 className="title text-center">Add Patient Medical Information</h5>
+                  <h5 className="title text-center">Patient Medical Information</h5>
                   <hr />
                 </CardHeader>
                 <CardBody>
@@ -457,7 +458,7 @@ function ViewUser(){
                         {/* row 1 */}
                         <FormGroup>
                           <label>Medical Record ID</label>
-                          <Input type="text" id="medicalRecordID"
+                          <Input type="text" id="medicalRecordID" disabled
                             value={medicalRecordID}
                             onChange={(event) => {
                               setMId(event.target.value);
@@ -469,7 +470,7 @@ function ViewUser(){
                         <FormGroup>
                           {/* row 2 col 1 */}
                           <label>Medical Problems</label>
-                          <Input type="text" id="medicalProblems"
+                          <Input type="text" id="medicalProblems" disabled
                             value={medicalProblems}
                             onChange={(event) => {
                               setMedicalProblems(event.target.value);
@@ -482,7 +483,7 @@ function ViewUser(){
                           <label >
                             Prescription
                           </label>
-                          <Input type="text" id="prescription"
+                          <Input type="text" id="prescription" disabled
                             value={prescription}
                             onChange={(event) => {
                               setPrescription(event.target.value);
@@ -496,7 +497,7 @@ function ViewUser(){
                         <FormGroup>
                           {/* row 2 col 1 */}
                           <label>Medical Test Results</label>
-                          <Input type="text" id="medicalTestResults"
+                          <Input type="text" id="medicalTestResults" disabled
                             value={medicalTestResults}
                             onChange={(event) => {
                               setMedicalTestResults(event.target.value);
@@ -509,8 +510,8 @@ function ViewUser(){
                       <Col className="pr-1" md="11">
                         <FormGroup>
                           <label>Allergies</label>
-                          <InputGroup >
-                            <Input type="text" id="allergies"
+                          <InputGroup > 
+                            <Input type="text" id="allergies" disabled
                               value={allergies}
                               onChange={(event) => {
                                 setAllergies(event.target.value);
@@ -526,7 +527,7 @@ function ViewUser(){
                           <label >
                             Chronic Medication
                           </label>
-                          <Input type="text" id="chronicMedication"
+                          <Input type="text" id="chronicMedication" disabled
                             value={chronicMedication}
                             onChange={(event) => {
                               setChronicMedication(event.target.value);
@@ -541,7 +542,7 @@ function ViewUser(){
                           <label >
                             Immunisations
                           </label>
-                          <Input type="text" id="immunisations"
+                          <Input type="text" id="immunisations" disabled
                             value={immunisations}
                             onChange={(event) => {
                               setImmunisations(event.target.value);
@@ -554,7 +555,7 @@ function ViewUser(){
                           <label >
                             Hospitalisations
                           </label>
-                          <Input type="text" id="hospitalisations"
+                          <Input type="text" id="hospitalisations" disabled
                             value={hospitalisations}
                             onChange={(event) => {
                               setHospitalisations(event.target.value);
@@ -567,7 +568,7 @@ function ViewUser(){
                           <label >
                             Folder Number
                           </label>
-                          <Input type="text" id="folderNumber"
+                          <Input type="text" id="folderNumber" disabled
                             value={folderNumber}
                             onChange={(event) => {
                               setFolderNumber(event.target.value);
@@ -581,29 +582,6 @@ function ViewUser(){
                 </div>                
   
   
-            </Col>
-            {/* Right card in Manage Users */}
-            <Col md="4"  >
-              <Card >
-                <CardHeader>
-                  <h5 className="title text-center"  >Search</h5>
-                  <hr />
-                </CardHeader>
-                <CardBody>
-                  <div className="title text-center" >
-                    {/* <button type="Update" class="btn btn-danger" onClick={search}>Search</button> */}
-                    <button type="Update" class="btn btn-danger" onClick={save}>Save</button>
-                    <button type="button" class="btn btn-danger" onClick={DeletePatient}>Delete</button>
-                    <hr />
-                  </div>
-                </CardBody>
-              </Card>
-  
-   
-         
-  
-  
-              
             </Col>
           </Row>
         </div>

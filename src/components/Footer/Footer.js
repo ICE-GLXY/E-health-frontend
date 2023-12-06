@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "reactstrap";
 // used for making the prop types of this component
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function Footer(props) {
   return (
@@ -12,13 +13,12 @@ function Footer(props) {
             <li>
         
         &copy; {1900 + new Date().getYear()} {" "}
-          <a
-            href="https://www.invisionapp.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Disclaimer
-          </a>
+              <Link
+              to={{
+                pathname: `/admin/Disclaimer`}}
+              >
+              Disclaimer
+            </Link>
           </li>
           </ul>
           </nav>

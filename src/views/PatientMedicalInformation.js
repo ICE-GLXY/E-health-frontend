@@ -163,7 +163,7 @@ function RegularTables()
               <CardBody>
 
 
-                <Table responsive>
+                <Table responsive bordered>
                   <thead className="text-primary">
                     <tr>
                       {thead.map((prop, key) => {
@@ -197,10 +197,10 @@ function RegularTables()
                     <td>{patient.patientMedicalInformation.hospitalisations}</td> 
                     <td>{patient.patientMedicalInformation.folderNumber}</td>    
 
-                    <td>
+                    {/* <td>
 
                         <button type="button" class="btn btn-danger" onClick={() => DeleteUser(patientMedicalInformation.medicalRecordID)}>Delete</button>
-                    </td>
+                    </td> */}
                     </tr>
                 </tbody>
                 );

@@ -9,6 +9,7 @@ import Upgrade from "views/Upgrade.js";
 import ManageUsers from "views/ManageUsers.js";
 import ViewUser from "views/ViewUser.js";
 import MedicalFacility from "views/MedicalFacility.js"
+import Disclaimer from "views/Disclaimer.js";
 
 var dashRoutes = [
   {
@@ -61,16 +62,20 @@ var dashRoutes = [
   //   component: <MedicalFacility />,
   //   layout: "/admin",
   // },
-  {
-    path: "/QrCode",
-    name: "Qr Code",
-    icon: "files_paper",
-    component: <QrCode />,
-    layout: "/admin",
-  },
+  // {
+  //   path: "/QrCode",
+  //   name: "Qr Code",
+  //   icon: "files_paper",
+  //   component: <QrCode />,
+  //   layout: "/admin",
+  // },
   {
     path: "/ViewUser/:patientID",
     component: <ViewUser />,
+  },
+  {
+    path: "Disclaimer",
+    component: <Disclaimer />,
   },
 ];
 export default dashRoutes;
