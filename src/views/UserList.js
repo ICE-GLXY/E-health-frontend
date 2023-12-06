@@ -152,7 +152,7 @@ function RegularTables()
               <CardBody>
 
 
-                <Table responsive>
+                <Table responsive bordered>
                   <thead className="text-primary">
                     <tr>
                       {thead.map((prop, key) => {

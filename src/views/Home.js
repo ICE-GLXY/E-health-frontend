@@ -1,9 +1,10 @@
 import React from "react";
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
-import BMedication from 'assets/img/Blue Medication .jpeg';
-import RMask from 'assets/img/Red Masks.jpg';
-import YTablets from 'assets/img/Yellow Tablets.jpg';
+import Doc from 'assets/img/Doctor Hor.jpg';
+import Gerny from 'assets/img/Gurny Hor.jpg';
+import Steth from 'assets/img/Steth Hor.jpg';
+import TabsHor from 'assets/img/Tabs Hor.jpg';
+
 
 // reactstrap components
 import {
@@ -14,6 +15,7 @@ import {
   CardTitle,
   Row,
   Col,
+  UncontrolledCarousel,
   Table,
   Button,
   Label,
@@ -40,52 +42,43 @@ function Home() {
         }
       />
       
-      <div className="content">
+      <div className="content" >
         <Row>
-          <Col xs={12} md={4}>
+          <Col xs={12} md={12}>
             {/* Shipped products chart  */}
-            <Card className="card-chart">
-              <CardHeader>
-                {/* <h5 className="card-category">Heading 1</h5> */}
-                {/* <CardTitle tag="h4">Big Heading 1</CardTitle> */}
-              </CardHeader>
+            <Card className="card-chart" color="dark">
               <CardBody>
-                <img src={BMedication}/>
+                {/* <img src={BMedication}/> */}
+                <UncontrolledCarousel fade
+  items={[
+    {
+      // altText: 'Slide 1',
+      // caption: 'Slide 1',
+      key: 1,
+      src: Gerny
+    },
+    {
+      // altText: 'Slide 2',
+      // caption: 'Slide 2',
+      key: 2,
+      src: Steth
+    },
+    {
+      // altText: 'Slide 2',
+      // caption: 'Slide 2',
+      key: 3,
+      src: Doc
+    },
+    {
+      // altText: 'Slide 3',
+      // caption: 'Slide 3',
+      key: 4,
+      src: TabsHor
+    }
+  ]}
+ />
               {/* insert into body  */}
               </CardBody>
-              <CardFooter>
-              {/* insert into footer  */}
-              </CardFooter>
-            </Card>
-          </Col>
-          <Col xs={12} md={4}>
-            <Card className="card-chart">
-              <CardHeader>
-                {/* <h5 className="card-category">Heading 2</h5> */}
-                {/* <CardTitle tag="h4">Big Heading 2</CardTitle> */}
-              </CardHeader>
-              <CardBody>
-                <img src={RMask}/>
-                {/* insert into body  */}
-              </CardBody>
-              <CardFooter>
-                {/* insert into footer  */}
-              </CardFooter>
-            </Card>
-          </Col>
-          <Col xs={12} md={4}>
-            <Card className="card-chart">
-              <CardHeader>
-                {/* <h5 className="card-category">Heading 3</h5> */}
-                {/* <CardTitle tag="h4">Big Heading 3</CardTitle> */}
-              </CardHeader>
-              <CardBody>
-              <img src={YTablets}/>
-                {/* insert into body  */}
-              </CardBody>
-              <CardFooter>
-                {/* insert into footer  */}
-              </CardFooter>
             </Card>
           </Col>
         </Row>
