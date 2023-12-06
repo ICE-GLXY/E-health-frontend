@@ -610,10 +610,19 @@ catch{
                         />
                       </FormGroup>
                       <Row>
+
+                    
+                    
+                  </Row>
+                  
+                    </Col>
+                    
                     <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label>Name </label>
-                        <Input type="text" id="name"
+                        {/* row 2 col 1 */}
+                        <label>Name</label>
+                        <Input type="text" id="name"  
+
                           value={name}
                           onChange={(event) => {
                             setName(event.target.value);
@@ -623,16 +632,16 @@ catch{
                     </Col>
                     <Col className="pr-1" md="11">
                       <FormGroup>
+                        {/* row 2 col 1 */}
                         <label>Surname</label>
-                        <Input type="text" id="surname"
+                        <Input type="text" id="surname"  
+
                           value={surname}
                           onChange={(event) => {
-                            setSName(event.target.value);
+                            setCellPhoneNumber(event.target.value);
                           }}
                         />
                       </FormGroup>
-                    </Col>
-                  </Row>
                     </Col>
                     <Col className="pr-1" md="11">
                       <FormGroup>
