@@ -262,13 +262,123 @@ return;
     event.preventDefault();
 
     //validations
-    if (username.trim() === '') {
-      alert('Username cannot be blank');
+    if (name.trim() === '') {
+      alert('Name cannot be blank');
       return;
     }
-    
+
+    if (surname.trim() === '') {
+      alert('Surname cannot be blank');
+      return;
+    }
+
+    if (password.trim() === '') {
+      alert('Password cannot be blank');
+      return;
+    }
+
+    if (cellPhoneNumber.trim() === '') {
+      alert('Cellphone Number cannot be blank');
+      return;
+    }
+
+    if (email.trim() === '') {
+      alert('Email cannot be blank');
+      return;
+    }
+
+    if (userType.trim() === '') {
+      alert('User Type cannot be blank');
+      return;
+    }
+
     if (patientID.trim() === '') {
       alert('patientID cannot be blank');
+      return;
+    }
+
+    if (idNumber.trim() === '') {
+      alert('ID Number cannot be blank');
+      return;
+    }
+
+    if (age.trim() === '') {
+      alert('Age cannot be blank');
+      return;
+    }
+
+    if (weight.trim() === '') {
+      alert('Weight cannot be blank');
+      return;
+    }
+
+    if (height.trim() === '') {
+      alert('Height cannot be blank');
+      return;
+    }
+
+    if (streetNumber.trim() === '') {
+      alert('Street Number cannot be blank');
+      return;
+    }
+
+    if (streetName.trim() === '') {
+      alert('Street Name cannot be blank');
+      return;
+    }
+
+    if (city.trim() === '') {
+      alert('City cannot be blank');
+      return;
+    }
+
+    if (province.trim() === '') {
+      alert('Province cannot be blank');
+      return;
+    }
+
+    if (medicalRecordID.trim() === '') {
+      alert('Medical Record ID cannot be blank');
+      return;
+    }
+
+    if (medicalTestResults.trim() === '') {
+      alert('Medical Test Results cannot be blank');
+      return;
+    }
+
+    if (folderNumber.trim() === '') {
+      alert('Folder Number cannot be blank');
+      return;
+    }
+
+    if (chronicMedication.trim() === '') {
+      alert('Chronic Medication cannot be blank');
+      return;
+    }
+
+    if (hospitalisations.trim() === '') {
+      alert('Hospitalisations cannot be blank');
+      return;
+    }
+
+    if (allergies.trim() === '') {
+      alert('Allergies cannot be blank');
+      return;
+    }
+
+    if (medicalProblems.trim() === '') {
+      alert('Medical Problems cannot be blank');
+      return;
+    }
+
+    if (immunisations.trim() === '') {
+      alert('Immunisations cannot be blank');
+      return;
+    }
+
+    if (prescription.trim() === '') {
+      alert('Prescription cannot be blank');
       return;
     }
 
@@ -385,6 +495,9 @@ try{
   setImmunisations("");
   setHospitalisations("");
   setFolderNumber("");
+
+  setImageUrl(null);
+  setResultFile(null);
 }
 catch{
   alert("Clear failed");
@@ -479,7 +592,7 @@ catch{
                       {/* row 1 */}
                       <FormGroup>
                         <label>Username</label>
-                        <Input type="text" id="username" required maxlength = "30"
+                        <Input type="text" id="username" required maxlength = "7"
 
                           value={username}
                           onChange={(event) => {
@@ -491,18 +604,26 @@ catch{
                       </FormGroup>
                       <Row>
                     <Col className="pr-1" md="11">
+                 
+                    </Col>
+                  </Row>
+                    </Col>
+                    <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label>Name </label>
+                        {/* row 2 col 1 */}
+                        <label>Name</label>
                         <Input type="text" id="name"
+
                           value={name}
                           onChange={(event) => {
-                            setName(event.target.value);
+                            setCellPhoneNumber(event.target.value);
                           }}
                         />
                       </FormGroup>
                     </Col>
                     <Col className="pr-1" md="11">
                       <FormGroup>
+                        {/* row 2 col 1 */}
                         <label>Surname</label>
                         <Input type="text" id="surname"
                           value={surname}
@@ -512,13 +633,12 @@ catch{
                         />
                       </FormGroup>
                     </Col>
-                  </Row>
-                    </Col>
+                    
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
                         <label>Phone Number</label>
-                        <Input type="text" id="cellPhoneNumber"  maxlength = "12"
+                        <Input type="text" id="cellPhoneNumber"  maxlength = "10"
 
                           value={cellPhoneNumber}
                           onChange={(event) => {
@@ -547,7 +667,7 @@ catch{
                       <FormGroup>
                         <label>Password</label>
                         <InputGroup >
-                          <Input type={visible ? "text" : "password"} id="password"
+                        <Input type={visible ? "text" : "password"} id="password" maxlength = "25"
                             value={password}
                             onChange={(event) => {
                               setPassword(event.target.value);
@@ -614,7 +734,7 @@ catch{
                       {/* row 1 */}
                       <FormGroup>
                         <label>Patient ID</label>
-                        <Input type="text" id="patientID"
+                        <Input type="text" id="patientID" maxlength = "5"
                           value={patientID}
                           onChange={(event) => {
                             setPId(event.target.value);
@@ -653,7 +773,7 @@ catch{
                         <label >
                           Age
                         </label>
-                        <Input type="text" id="age"
+                        <Input type="text" id="age" maxlength = "3"
                           value={age}
                           onChange={(event) => {
                             setAge(event.target.value);
@@ -667,7 +787,7 @@ catch{
                       <FormGroup>
                         {/* row 2 col 1 */}
                         <label>Weight</label>
-                        <Input type="text" id="weight"
+                        <Input type="text" id="weight" maxlength = "5"
                           value={weight}
                           onChange={(event) => {
                             setWeight(event.target.value);
@@ -681,7 +801,7 @@ catch{
                       <FormGroup>
                         <label>Height</label>
                         <InputGroup >
-                          <Input type="text" id="height"
+                        <Input type="text" id="height" maxlength = "10"
                             value={height}
                             onChange={(event) => {
                               setHeight(event.target.value);
@@ -697,7 +817,7 @@ catch{
                         <label >
                           Street Number
                         </label>
-                        <Input type="text" id="streetNumber"
+                        <Input type="text" id="streetNumber" maxlength = "15"
                           value={streetNumber}
                           onChange={(event) => {
                             setStreetNumber(event.target.value);
@@ -713,7 +833,7 @@ catch{
                         <label >
                           Street Name
                         </label>
-                        <Input type="text" id="streetName"
+                        <Input type="text" id="streetName" maxlength = "30"
                           value={streetName}
                           onChange={(event) => {
                             setStreetName(event.target.value);
@@ -726,7 +846,7 @@ catch{
                         <label >
                           City
                         </label>
-                        <Input type="text" id="city"
+                        <Input type="text" id="city" maxlength = "30"
                           value={city}
                           onChange={(event) => {
                             setCity(event.target.value);
@@ -739,7 +859,7 @@ catch{
                         <label >
                           Province
                         </label>
-                        <Input type="text" id="province"
+                        <Input type="text" id="province" maxlength = "30"
                           value={province}
                           onChange={(event) => {
                             setProvince(event.target.value);
@@ -752,7 +872,7 @@ catch{
                         <label >
                         Medical Record ID
                         </label>
-                        <Input type="text" id="patientMedicalInformation"
+                        <Input type="text" id="patientMedicalInformation" maxlength = "7"
                           value={patientMedicalInformation}
                           onChange={(event) => {
                             setPatientMedicalInformation(event.target.value);
@@ -783,7 +903,7 @@ catch{
                       {/* row 1 */}
                       <FormGroup>
                         <label>Medical Record ID</label>
-                        <Input type="text" id="medicalRecordID"
+                        <Input type="text" id="medicalRecordID" maxlength = "7"
                           value={medicalRecordID}
                           onChange={(event) => {
                             setMId(event.target.value);
@@ -797,7 +917,7 @@ catch{
                       <FormGroup>
                         {/* row 2 col 1 */}
                         <label>Medical Problems</label>
-                        <Input type="text" id="medicalProblems"
+                        <Input type="text" id="medicalProblems" maxlength = "255"
                           value={medicalProblems}
                           onChange={(event) => {
                             setMedicalProblems(event.target.value);
@@ -810,7 +930,7 @@ catch{
                         <label >
                           Prescription
                         </label>
-                        <Input type="text" id="prescription"
+                        <Input type="text" id="prescription" maxlength = "255"
                           value={prescription}
                           onChange={(event) => {
                             setPrescription(event.target.value);
@@ -824,7 +944,7 @@ catch{
                       <FormGroup>
                         {/* row 2 col 1 */}
                         <label>Medical Test Results</label>
-                        <Input type="text" id="medicalTestResults"
+                        <Input type="text" id="medicalTestResults" maxlength = "100"
                           value={medicalTestResults}
                           onChange={(event) => {
                             setMedicalTestResults(event.target.value);
@@ -838,7 +958,7 @@ catch{
                       <FormGroup>
                         <label>Allergies</label>
                         <InputGroup >
-                          <Input type="text" id="allergies"
+                        <Input type="text" id="allergies" maxlength = "75"
                             value={allergies}
                             onChange={(event) => {
                               setAllergies(event.target.value);
@@ -854,7 +974,7 @@ catch{
                         <label >
                           Chronic Medication
                         </label>
-                        <Input type="text" id="chronicMedication"
+                        <Input type="text" id="chronicMedication" maxlength = "75"
                           value={chronicMedication}
                           onChange={(event) => {
                             setChronicMedication(event.target.value);
@@ -869,7 +989,7 @@ catch{
                         <label >
                           Immunisations
                         </label>
-                        <Input type="text" id="immunisations"
+                        <Input type="text" id="immunisations" maxlength = "75"
                           value={immunisations}
                           onChange={(event) => {
                             setImmunisations(event.target.value);
@@ -882,7 +1002,7 @@ catch{
                         <label >
                           Hospitalisations
                         </label>
-                        <Input type="text" id="hospitalisations"
+                        <Input type="text" id="hospitalisations" maxlength = "75"
                           value={hospitalisations}
                           onChange={(event) => {
                             setHospitalisations(event.target.value);
@@ -895,7 +1015,7 @@ catch{
                         <label >
                           Folder Number
                         </label>
-                        <Input type="text" id="folderNumber"
+                        <Input type="text" id="folderNumber" maxlength = "5"
                           value={folderNumber}
                           onChange={(event) => {
                             setFolderNumber(event.target.value);
