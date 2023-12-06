@@ -467,7 +467,7 @@ catch{
       <div className="content">
         <Row>
           <Col md="8">
-            <Card>
+            <Card style={{ backgroundColor: '' }}>
               <CardHeader>
                 <h5 className="title text-center">Create or Edit a User</h5>
                 <hr />
