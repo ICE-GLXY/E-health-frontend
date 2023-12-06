@@ -262,6 +262,11 @@ return;
     event.preventDefault();
 
     //validations
+    if (username.trim() === '') {
+      alert('Username cannot be blank');
+      return;
+    }
+
     if (name.trim() === '') {
       alert('Name cannot be blank');
       return;
@@ -304,16 +309,6 @@ return;
 
     if (age.trim() === '') {
       alert('Age cannot be blank');
-      return;
-    }
-
-    if (weight.trim() === '') {
-      alert('Weight cannot be blank');
-      return;
-    }
-
-    if (height.trim() === '') {
-      alert('Height cannot be blank');
       return;
     }
 
@@ -576,11 +571,11 @@ catch{
 
   return (
     <>
-      <PanelHeader size="sm" />
-      <div className="content">
+      <PanelHeader  size="sm" />
+      <div className="content" >
         <Row>
           <Col md="8">
-            <Card style={{ backgroundColor: '' }}>
+            <Card style={{color: 'Black' }}>
               <CardHeader>
                 <h5 className="title text-center">Create or Edit a User</h5>
                 <hr />
@@ -590,9 +585,9 @@ catch{
                   <Row>
                     <Col className="pr-1" md="11">
                       {/* row 1 */}
-                      <FormGroup>
-                        <label>Username</label>
-                        <Input type="text" id="username" required maxlength = "7"
+                      <FormGroup >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Username</label>
+                        <Input  style={{ color: 'Black', fontSize: '16px' , backgroundColor: 'white'}} type="text" id="username" required maxlength = "7" 
 
                           value={username}
                           onChange={(event) => {
@@ -611,7 +606,7 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>Name</label>
+                        <label style={{ color: 'Black'}}>Name</label>
                         <Input type="text" id="name"
 
                           value={name}
@@ -624,7 +619,7 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>Surname</label>
+                        <label style={{ color: 'Black'}}>Surname</label>
                         <Input type="text" id="surname"
                           value={surname}
                           onChange={(event) => {
@@ -637,7 +632,7 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>Phone Number</label>
+                        <label style={{ color: 'Black'}}>Phone Number</label>
                         <Input type="text" id="cellPhoneNumber"  maxlength = "10"
 
                           value={cellPhoneNumber}
@@ -649,7 +644,7 @@ catch{
                     </Col>
                     <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label htmlFor="exampleInputEmail1">
+                        <label style={{ color: 'Black'}} htmlFor="exampleInputEmail1"> 
                           Email address
                         </label>
                         <Input type="text" id="email"
@@ -665,7 +660,7 @@ catch{
                   <Row>
                     <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label>Password</label>
+                        <label style={{ color: 'Black'}}>Password</label>
                         <InputGroup >
                         <Input type={visible ? "text" : "password"} id="password" maxlength = "25"
                             value={password}
@@ -687,7 +682,7 @@ catch{
                   <Row>
                     <Col className="pr-1" md="11">
                       {/* <FormGroup> */}
-                      <label  >User Type</label>
+                      <label  style={{ color: 'Black'}}>User Type</label>
                       {/* <Input type="text" id="userType"  */}
                       <select className="custom-select"
                         value={userType}
