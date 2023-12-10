@@ -149,7 +149,6 @@ return;
 
     try {
       await axios.get("http://localhost:8080/E-Health-System/patient/read/" + searchId)
-      // await axios.get("http://localhost:8080/E-Health-System/User/read/" + searchId)
         .then((res) => {
           console.log(res.data);
           
@@ -262,6 +261,11 @@ return;
     event.preventDefault();
 
     //validations
+    if (username.trim() === '') {
+      alert('Username cannot be blank');
+      return;
+    }
+
     if (name.trim() === '') {
       alert('Name cannot be blank');
       return;
@@ -304,16 +308,6 @@ return;
 
     if (age.trim() === '') {
       alert('Age cannot be blank');
-      return;
-    }
-
-    if (weight.trim() === '') {
-      alert('Weight cannot be blank');
-      return;
-    }
-
-    if (height.trim() === '') {
-      alert('Height cannot be blank');
       return;
     }
 
@@ -576,13 +570,13 @@ catch{
 
   return (
     <>
-      <PanelHeader size="sm" />
-      <div className="content">
+      <PanelHeader  size="sm" />
+      <div className="content" >
         <Row>
           <Col md="8">
-            <Card style={{ backgroundColor: '' }}>
+            <Card style={{color: 'Black' }}>
               <CardHeader>
-                <h5 className="title text-center">Create or Edit a User</h5>
+                <h5 className="title text-center" style={{ color: 'Black', fontSize: '25px', fontFamily:'Verdana  '}}>Create or Edit a User</h5>
                 <hr />
               </CardHeader>
               <CardBody>
@@ -590,9 +584,9 @@ catch{
                   <Row>
                     <Col className="pr-1" md="11">
                       {/* row 1 */}
-                      <FormGroup>
-                        <label>Username</label>
-                        <Input type="text" id="username" required maxlength = "7"
+                      <FormGroup >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Username</label>
+                        <Input  style={{ color: 'Black', fontSize: '16px' , backgroundColor: 'white'}} type="text" id="username" required maxlength = "7" 
 
                           value={username}
                           onChange={(event) => {
@@ -611,12 +605,12 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>Name</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Name</label>
                         <Input type="text" id="name"
 
                           value={name}
                           onChange={(event) => {
-                            setCellPhoneNumber(event.target.value);
+                            setName(event.target.value);
                           }}
                         />
                       </FormGroup>
@@ -624,7 +618,7 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>Surname</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Surname</label>
                         <Input type="text" id="surname"
                           value={surname}
                           onChange={(event) => {
@@ -637,7 +631,7 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>Phone Number</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Phone Number</label>
                         <Input type="text" id="cellPhoneNumber"  maxlength = "10"
 
                           value={cellPhoneNumber}
@@ -649,7 +643,7 @@ catch{
                     </Col>
                     <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label htmlFor="exampleInputEmail1">
+                        <label style={{ color: 'Black', fontSize: '16px'}} htmlFor="exampleInputEmail1"> 
                           Email address
                         </label>
                         <Input type="text" id="email"
@@ -665,7 +659,7 @@ catch{
                   <Row>
                     <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label>Password</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Password</label>
                         <InputGroup >
                         <Input type={visible ? "text" : "password"} id="password" maxlength = "25"
                             value={password}
@@ -687,7 +681,7 @@ catch{
                   <Row>
                     <Col className="pr-1" md="11">
                       {/* <FormGroup> */}
-                      <label  >User Type</label>
+                      <label  style={{ color: 'Black', fontSize: '16px'}}>User Type</label>
                       {/* <Input type="text" id="userType"  */}
                       <select className="custom-select"
                         value={userType}
@@ -724,7 +718,7 @@ catch{
              <div className="author">
               <Card>
               <CardHeader>
-                <h5 className="title text-center">Add Patient Details</h5>
+                <h5 className="title text-center" style={{ color: 'Black', fontSize: '25px', fontFamily:'Verdana  '}}>Add Patient Details</h5>
                 <hr />
               </CardHeader>
               <CardBody>
@@ -733,7 +727,7 @@ catch{
                     <Col className="pr-1" md="11">
                       {/* row 1 */}
                       <FormGroup>
-                        <label>Patient ID</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Patient ID</label>
                         <Input type="text" id="patientID" maxlength = "5"
                           value={patientID}
                           onChange={(event) => {
@@ -745,7 +739,7 @@ catch{
                     <Col className="pr-1" md="11">
                       {/* row 1 */}
                       <FormGroup>
-                        <label>ID Number</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>ID Number</label>
                         <Input type="text" id="idNumber" maxlength = "13"
                           value={idNumber}
                           onChange={(event) => {
@@ -757,7 +751,7 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>Username</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Username</label>
                         <Input type="text" id="user"
                           value={user}
                           onChange={(event) => {
@@ -770,7 +764,7 @@ catch{
                     </Col>
                     <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
                           Age
                         </label>
                         <Input type="text" id="age" maxlength = "3"
@@ -786,7 +780,7 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>Weight</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Weight</label>
                         <Input type="text" id="weight" maxlength = "5"
                           value={weight}
                           onChange={(event) => {
@@ -799,7 +793,7 @@ catch{
                   <Row>
                     <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label>Height</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Height</label>
                         <InputGroup >
                         <Input type="text" id="height" maxlength = "10"
                             value={height}
@@ -814,7 +808,7 @@ catch{
                   <Row>
                     <Col className="pr-1" md="11"> 
                     <FormGroup>
-                        <label >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
                           Street Number
                         </label>
                         <Input type="text" id="streetNumber" maxlength = "15"
@@ -830,7 +824,7 @@ catch{
                   </Row>
                   <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
                           Street Name
                         </label>
                         <Input type="text" id="streetName" maxlength = "30"
@@ -843,7 +837,7 @@ catch{
                       </Col>
                       <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
                           City
                         </label>
                         <Input type="text" id="city" maxlength = "30"
@@ -856,7 +850,7 @@ catch{
                       </Col>
                       <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
                           Province
                         </label>
                         <Input type="text" id="province" maxlength = "30"
@@ -869,7 +863,7 @@ catch{
                       </Col>
                       <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
                         Medical Record ID
                         </label>
                         <Input type="text" id="patientMedicalInformation" maxlength = "7"
@@ -893,7 +887,7 @@ catch{
           <div className="author">
               <Card>
               <CardHeader>
-                <h5 className="title text-center">Add Patient Medical Information</h5>
+                <h5 className="title text-center" style={{ color: 'Black', fontSize: '25px', fontFamily:'Verdana  '}}>Add Patient Medical Information</h5>
                 <hr />
               </CardHeader>
               <CardBody>
@@ -902,7 +896,7 @@ catch{
                     <Col className="pr-1" md="11">
                       {/* row 1 */}
                       <FormGroup>
-                        <label>Medical Record ID</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Medical Record ID</label>
                         <Input type="text" id="medicalRecordID" maxlength = "7"
                           value={medicalRecordID}
                           onChange={(event) => {
@@ -916,7 +910,7 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>Medical Problems</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Medical Problems</label>
                         <Input type="text" id="medicalProblems" maxlength = "255"
                           value={medicalProblems}
                           onChange={(event) => {
@@ -927,7 +921,7 @@ catch{
                     </Col>
                     <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
                           Prescription
                         </label>
                         <Input type="text" id="prescription" maxlength = "255"
@@ -943,7 +937,7 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label>Medical Test Results</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Medical Test Results</label>
                         <Input type="text" id="medicalTestResults" maxlength = "100"
                           value={medicalTestResults}
                           onChange={(event) => {
@@ -956,7 +950,7 @@ catch{
                   <Row>
                     <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label>Allergies</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Allergies</label>
                         <InputGroup >
                         <Input type="text" id="allergies" maxlength = "75"
                             value={allergies}
@@ -971,7 +965,7 @@ catch{
                   <Row>
                     <Col className="pr-1" md="11"> 
                     <FormGroup>
-                        <label >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
                           Chronic Medication
                         </label>
                         <Input type="text" id="chronicMedication" maxlength = "75"
@@ -986,7 +980,7 @@ catch{
                   </Row>
                   <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
                           Immunisations
                         </label>
                         <Input type="text" id="immunisations" maxlength = "75"
@@ -999,7 +993,7 @@ catch{
                       </Col>
                       <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
                           Hospitalisations
                         </label>
                         <Input type="text" id="hospitalisations" maxlength = "75"
@@ -1012,7 +1006,7 @@ catch{
                       </Col>
                       <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label >
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
                           Folder Number
                         </label>
                         <Input type="text" id="folderNumber" maxlength = "5"
@@ -1034,7 +1028,7 @@ catch{
           <Col md="4"  >
             <Card className="card-user">
               <CardHeader>
-                <h5 className="title text-center"  >Find a User</h5>
+                <h5 className="title text-center"  style={{ color: 'Black', fontSize: '25px', fontFamily:'Verdana  '}}>Find a User</h5>
                 <hr />
               </CardHeader>
               {/* <div className="image"> */}
@@ -1043,7 +1037,7 @@ catch{
                 <form>
                   <InputGroup className="no-border">
                     {/* <Input placeholder="username..." /> */}
-                    <Input placeholder="Patient ID..." type="text" id="Searchusername"
+                    <Input style={{fontSize: '14px', fontFamily:''}} placeholder="Patient ID..." type="text" id="Searchusername"
                       value={searchId}
                       onChange={(event) => {
                         setSearchId(event.target.value);
@@ -1066,12 +1060,12 @@ catch{
                 <br />
                 <br />
                 <div className="author" >
-                  <button type="Update" class="btn btn-danger" onMouseLeave={showPatient} onClick={search}>Search</button>
-                  <button type="button" class="btn btn-danger" onMouseLeave={showPatient} onClick={ClearPatient}>Clear All</button>
+                  <button type="Update" class="btn btn-danger" onMouseLeave={showPatient} onClick={search} style={{fontSize: '14px', fontFamily:'Verdana'}}>Search</button>
+                  <button type="button" class="btn btn-danger" onMouseLeave={showPatient} onClick={ClearPatient} style={{fontSize: '14px', fontFamily:'Verdana'}}>Clear All</button>
 
                   <hr />
-                  <button type="Update" class="btn btn-danger" onClick={save}> Save </button>
-                  <button type="button" class="btn btn-danger" onClick={() => DeletePatient(searchId)}>Delete</button>
+                  <button type="Update" class="btn btn-danger" onClick={save} style={{fontSize: '14px', fontFamily:'Verdana'}}> Save </button>
+                  <button type="button" class="btn btn-danger" onClick={() => DeletePatient(searchId)} style={{fontSize: '14px', fontFamily:'Verdana'}}>Delete</button>
 
                 </div>
               </CardBody>
@@ -1079,7 +1073,7 @@ catch{
             
             <Card className="card-user">
               <CardHeader>
-                <h5 className="title text-center"  >QR Search</h5>
+                <h5 className="title text-center" style={{ color: 'Black', fontSize: '25px', fontFamily:'Verdana  '}} >QR Search</h5>
                 <hr />
               </CardHeader>
               {/* <div className="image"> */}
@@ -1092,29 +1086,31 @@ catch{
                 <br />
                 <div className="author" >
                   <button class="btn btn-danger" variant="contained" 
-                            color="primary" onClick={() => generateQrCode()}>Generate</button>
+                            color="primary" onClick={() => generateQrCode()} style={{fontSize: '14px', fontFamily:'Verdana'}}>Generate</button>
                             <br/>
                             {imageUrl ? (
                               <a href={imageUrl} download>
                                   <img src={imageUrl} alt="img"/>
                               </a>) : null}
                   <hr />
-              <button class="btn btn-danger" variant="contained" color="primary" onClick={openDialog}>Upload QR Code</button>
-              <button type="Update" class="btn btn-danger" onMouseLeave={showPatient} onClick={searchQR}>search QR ID</button>
+              <button class="btn btn-danger" variant="contained" color="primary" onClick={openDialog} style={{fontSize: '14px', fontFamily:'Verdana'}}>Upload QR Code</button>
+              <button type="Update" class="btn btn-danger" onMouseLeave={showPatient} onClick={searchQR} style={{fontSize: '14px', fontFamily:'Verdana'}}>search QR ID</button>
               <h6>QR ID:  {ResultFile}</h6>
               </div>
               <div>
                         <QrReader
                           ref={qrRef}
                           delay={100}
-                          style={{alignItems: "center",width: "30%"}}
+                          style={{alignItems: "center",width: "0%"}}
                           onError={handleErrorFile}
                           onScan={fileScan}
                           legacyMode={true}
                         />
+                                          <hr />
+
                           <QrReader
                          delay={100}
-                         style={{alignItems: "center", width: '30%'}}
+                         style={{alignItems: "center", width: '100%'}}
                          onError={handleErrorWebCam}
                          onScan={handleScanWebCam}
                          />

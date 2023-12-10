@@ -31,7 +31,7 @@ function Sidebar(props) {
   return (
     <div className="sidebar" data-color={props.backgroundColor}>
       <div className="logo">
-        <a
+        <a style={{ color: 'White', fontSize: '25px', fontFamily:'Verdana  '}}
           // href="http://localhost:3000/admin/dashboard"
           className="simple-text logo-mini"
           target="_blank"
@@ -39,7 +39,7 @@ function Sidebar(props) {
           <div className="now-ui-icons media-2_sound-wave">
           </div>
         </a>
-        <a
+        <a style={{ color: 'White', fontSize: '25px', fontFamily:'Verdana  '}}
           // href="http://localhost:3000/admin/dashboard"
           className="simple-text logo-normal"
           target="_blank"

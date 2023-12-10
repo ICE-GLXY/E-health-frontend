@@ -158,13 +158,13 @@ function RegularTables()
         <Col xs={12}>
             <Card>
               <CardHeader>
-                <CardTitle tag="h4">Patient Medical Information Table</CardTitle>
+                <CardTitle tag="h4" style={{ color: 'Black', fontSize: '25px', fontFamily:'Verdana', fontWeight:'bold'}}>Patient Medical Information Table</CardTitle>
               </CardHeader>
               <CardBody>
 
 
                 <Table responsive bordered>
-                  <thead className="text-primary">
+                  <thead className="text-primary" style={{ color: '', fontSize: '', fontFamily:'Verdana', fontWeight:'bold'}}>
                     <tr>
                       {thead.map((prop, key) => {
                         if (key === thead.length - 1)
@@ -186,7 +186,7 @@ function RegularTables()
            {
                 return(
                 <tbody>
-                    <tr>
+                    <tr style={{ color: '', fontSize: '', fontFamily:'Verdana', fontWeight:''}}>
                     <td>{patient.patientMedicalInformation.medicalRecordID}</td>
                     <td>{patient.patientMedicalInformation.medicalProblems}</td>
                     <td>{patient.patientMedicalInformation.prescription}</td>        

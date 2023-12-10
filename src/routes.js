@@ -10,39 +10,38 @@ import ManageUsers from "views/ManageUsers.js";
 import ViewUser from "views/ViewUser.js";
 import MedicalFacility from "views/MedicalFacility.js"
 import Disclaimer from "views/Disclaimer.js";
-
 var dashRoutes = [
   {
     path: "/Home",
-    name: "Home",
+    name: <span style={{fontWeight: 'bold' }}> Home</span>,
     icon: "shopping_shop",
     component: <Home />,
     layout: "/admin",
   },
   {
     path: "/UserList",
-    name: "User List",
+    name: <span style={{fontWeight: 'bold' }}>User List</span>,
     icon: "files_paper",
     component: <UserList />,
     layout: "/admin",
   },
   {
     path: "/ManageUsers",
-    name: "Manage Users",
+    name: <span style={{fontWeight: 'bold' }}>Manage Users</span>,
     icon: "design-2_ruler-pencil",
     component: < ManageUsers/>,
     layout: "/admin",
   },
   {
     path: "/PatientList",
-    name: "Patient List",
+    name: <span style={{fontWeight: 'bold' }}>Patient List</span>,
     icon: "files_paper",
     component: <PatientList />,
     layout: "/admin",
   },
   {
     path: "/PatientMedicalInformation",
-    name: "Patient Medical Information",
+    name: <span style={{fontWeight: 'bold' }}>Patient Medical Information</span>,
     icon: "files_paper",
     component: <PatientMedicalInformation />,
     layout: "/admin",
@@ -69,13 +68,13 @@ var dashRoutes = [
   //   component: <QrCode />,
   //   layout: "/admin",
   // },
-  {
-    path: "/ViewUser/:patientID",
-    component: <ViewUser />,
-  },
-  {
-    path: "Disclaimer",
-    component: <Disclaimer />,
-  },
+  // {
+  //   path: "/ViewUser/:patientID",
+  //   component: <ViewUser />,
+  // },
+  // {
+  //   path: "Disclaimer",
+  //   component: <Disclaimer />,
+  // },
 ];
 export default dashRoutes;
