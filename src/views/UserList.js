@@ -175,7 +175,7 @@ function RegularTables()
            {
                 return(
                 <tbody >
-                    <tr>
+                    <tr style={{ color: '', fontSize: '', fontFamily:'Verdana', fontWeight:''}}>
                     <td>{patient.user.username}</td>
                     <td>{patient.user.name}</td>
                     <td>{patient.user.surname}</td>

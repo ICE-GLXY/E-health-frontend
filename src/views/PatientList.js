@@ -102,7 +102,7 @@ function RegularTables()
 
 
                 <Table responsive bordered>
-                  <thead className="text-primary" style={{ color: '', fontSize: '', fontFamily:'Verdana', fontWeight:'bold'}}>
+                  <thead className="text-primary" style={{ color: '', fontSize: '15px', fontFamily:'Verdana', fontWeight:'bold'}}>
                     <tr>
                       {thead.map((prop, key) => {
                         if (key === thead.length - 1)
@@ -123,7 +123,7 @@ function RegularTables()
                   {patients.map(function fn(patient)
            {
                 return(
-                <tbody>
+                <tbody style={{ color: '', fontSize: '', fontFamily:'Verdana', fontWeight:''}}>
                     <tr>
                     <td>{patient.patientID}</td>
                     <td>{patient.idNumber}</td>
