@@ -68,13 +68,13 @@ var dashRoutes = [
   //   component: <QrCode />,
   //   layout: "/admin",
   // },
-  {
-    path: "/ViewUser/:patientID",
-    component: <ViewUser />,
-  },
-  {
-    path: "Disclaimer",
-    component: <Disclaimer />,
-  },
+  // {
+  //   path: "/ViewUser/:patientID",
+  //   component: <ViewUser />,
+  // },
+  // {
+  //   path: "Disclaimer",
+  //   component: <Disclaimer />,
+  // },
 ];
 export default dashRoutes;

@@ -164,7 +164,7 @@ function RegularTables()
 
 
                 <Table responsive bordered>
-                  <thead className="text-primary">
+                  <thead className="text-primary" style={{ color: '', fontSize: '', fontFamily:'Verdana', fontWeight:'bold'}}>
                     <tr>
                       {thead.map((prop, key) => {
                         if (key === thead.length - 1)
