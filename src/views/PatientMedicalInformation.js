@@ -158,7 +158,7 @@ function RegularTables()
         <Col xs={12}>
             <Card>
               <CardHeader>
-                <CardTitle tag="h4">Patient Medical Information Table</CardTitle>
+                <CardTitle tag="h4" style={{ color: 'Black', fontSize: '25px', fontFamily:'Verdana', fontWeight:'bold'}}>Patient Medical Information Table</CardTitle>
               </CardHeader>
               <CardBody>
 
