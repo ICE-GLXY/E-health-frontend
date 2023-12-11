@@ -107,7 +107,7 @@ const handleScanWebCam = (result) => {
     const [chronicMedication, setChronicMedication] = useState("");
     const [immunisations, setImmunisations] = useState("");
     const [nextOfKin, setNextOfKin] = useState("");
-    const [nextOfKinContact, setNextOfKinContact] = useState("");
+    const [nokContact, setNextOfKinContact] = useState("");
 
     const [folderNumber, setFolderNumber] = useState("");
 
@@ -219,7 +219,7 @@ return;
           setChronicMedication(res.data.patientMedicalInformation.chronicMedication)
           setImmunisations(res.data.patientMedicalInformation.immunisations);
           setNextOfKin(res.data.patientMedicalInformation.nextOfKin);
-          setNextOfKinContact(res.data.patientMedicalInformation.nextOfKinContact);
+          setNextOfKinContact(res.data.patientMedicalInformation.nokContact);
 
           setFolderNumber(res.data.patientMedicalInformation.folderNumber);
           
@@ -276,7 +276,7 @@ return;
           setChronicMedication(res.data.patientMedicalInformation.chronicMedication)
           setImmunisations(res.data.patientMedicalInformation.immunisations);
           setNextOfKin(res.data.patientMedicalInformation.nextOfKin);
-          setNextOfKinContact(res.data.patientMedicalInformation.nextOfKinContact);
+          setNextOfKinContact(res.data.patientMedicalInformation.nokContact);
 
           setFolderNumber(res.data.patientMedicalInformation.folderNumber);
 
@@ -343,10 +343,10 @@ return;
       return;
     }
 
-    if (streetNumber.trim() === '') {
-      alert('Street Number cannot be blank');
-      return;
-    }
+    // if (streetNumber.trim() === '') {
+    //   alert('Street Number cannot be blank');
+    //   return;
+    // }
 
     if (streetName.trim() === '') {
       alert('Street Name cannot be blank');
@@ -373,10 +373,10 @@ return;
       return;
     }
 
-    if (folderNumber.trim() === '') {
-      alert('Folder Number cannot be blank');
-      return;
-    }
+    // if (folderNumber.trim() === '') {
+    //   alert('Folder Number cannot be blank');
+    //   return;
+    // }
 
     if (chronicMedication.trim() === '') {
       alert('Chronic Medication cannot be blank');
@@ -439,7 +439,7 @@ return;
             folderNumber: folderNumber,
             chronicMedication: chronicMedication,
             nextOfKin: nextOfKin,
-            nextOfKinContact: nextOfKinContact,
+            nokContact: nokContact,
             allergies: allergies,
             medicalProblems: medicalProblems,
             immunisations: immunisations,
@@ -1062,8 +1062,8 @@ catch{
                         <label style={{ color: 'Black', fontSize: '16px'}}>
                         Next Of Kin Contact Number
                         </label>
-                        <Input type="text" id="nextOfKinContact" maxlength = "10"
-                          value={nextOfKinContact}
+                        <Input type="text" id="nokContact" maxlength = "10"
+                          value={nokContact}
                           onChange={(event) => {
                             setNextOfKinContact(event.target.value);
                           }}
