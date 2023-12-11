@@ -298,6 +298,11 @@ return;
       return;
     }
 
+    if (dob.trim() === '') {
+      alert('date of birth cannot be blank');
+      return;
+    }
+
     if (name.trim() === '') {
       alert('Name cannot be blank');
       return;
@@ -343,10 +348,10 @@ return;
       return;
     }
 
-    // if (streetNumber.trim() === '') {
-    //   alert('Street Number cannot be blank');
-    //   return;
-    // }
+    if (streetNumber === '') {
+      alert('Street Number cannot be blank');
+      return;
+    }
 
     if (streetName.trim() === '') {
       alert('Street Name cannot be blank');
