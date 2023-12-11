@@ -2,8 +2,12 @@ import React from "react";
 import QRCode from 'qrcode';
 import {Grid} from '@material-ui/core';
 import QrReader from 'modern-react-qr-reader';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 // reactstrap components
 import {
+  FormFeedback,
   Button,
   Card,
   CardHeader,
@@ -69,6 +73,7 @@ const handleScanWebCam = (result) => {
   const [surname, setSName] = useState("");
   const [password, setPassword] = useState("");
   const [cellPhoneNumber, setCellPhoneNumber] = useState("");
+
   const [email, setEmail] = useState("");
   const [userType, setUserType] = useState("");
   const [users, setUsers] = useState([]);
@@ -82,7 +87,7 @@ const handleScanWebCam = (result) => {
     const[idNumber, setIDnum] = useState("");
     // const [searchId, setSearchId] = useState('');
     const [user, setUser] = useState("");
-    const [age, setAge] = useState("");
+    // const [age, setAge] = useState("");
     const [weight, setWeight] = useState("");
     const [height, setHeight] = useState("");
     const [streetNumber, setStreetNumber] = useState("");
@@ -102,10 +107,32 @@ const handleScanWebCam = (result) => {
     const [chronicMedication, setChronicMedication] = useState("");
     const [immunisations, setImmunisations] = useState("");
     const [nextOfKin, setNextOfKin] = useState("");
+    const [nextOfKinContact, setNextOfKinContact] = useState("");
+
     const [folderNumber, setFolderNumber] = useState("");
 
 
     const [cardVisible, setCardVisible] = useState(false);
+
+
+
+
+//date of birth and validations for dob
+      const [dob, setDOB] = useState("");
+      const [isValidDOB, setIsValidDOB] = useState(true);
+
+      const validateDOB = (inputDate) => {
+        const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+        return dateRegex.test(inputDate);
+      };
+    
+      const handleInputChange = (event) => {
+        const inputDate = event.target.value;
+        setDOB(inputDate);
+    
+        // Validate the entered date
+        setIsValidDOB(validateDOB(inputDate));
+      };
 
     // const handleUserTypeChange = (e) => {
     //   const selectedType = e.target.value;
@@ -171,7 +198,7 @@ return;
           //leave user in?
           setUser(res.data.user.username);
 
-          setAge(res.data.age);
+          setDOB(res.data.dob);
           setWeight(res.data.weight);
           setHeight(res.data.height);
           setStreetNumber(res.data.streetNumber);
@@ -192,6 +219,8 @@ return;
           setChronicMedication(res.data.patientMedicalInformation.chronicMedication)
           setImmunisations(res.data.patientMedicalInformation.immunisations);
           setNextOfKin(res.data.patientMedicalInformation.nextOfKin);
+          setNextOfKinContact(res.data.patientMedicalInformation.nextOfKinContact);
+
           setFolderNumber(res.data.patientMedicalInformation.folderNumber);
           
           
@@ -224,8 +253,9 @@ return;
           setPId(res.data.patientID);
           //leave user in?
           setUser(res.data.user.username);
+          setIDnum(res.data.idNumber);
 
-          setAge(res.data.age);
+          setDOB(res.data.dob);
           setWeight(res.data.weight);
           setHeight(res.data.height);
           setStreetNumber(res.data.streetNumber);
@@ -246,6 +276,8 @@ return;
           setChronicMedication(res.data.patientMedicalInformation.chronicMedication)
           setImmunisations(res.data.patientMedicalInformation.immunisations);
           setNextOfKin(res.data.patientMedicalInformation.nextOfKin);
+          setNextOfKinContact(res.data.patientMedicalInformation.nextOfKinContact);
+
           setFolderNumber(res.data.patientMedicalInformation.folderNumber);
 
           setPatients(res.data.patientID);
@@ -286,10 +318,10 @@ return;
       return;
     }
 
-    if (email.trim() === '') {
-      alert('Email cannot be blank');
-      return;
-    }
+    // if (email.trim() === '') {
+    //   alert('Email cannot be blank');
+    //   return;
+    // }
 
     if (userType.trim() === '') {
       alert('User Type cannot be blank');
@@ -301,13 +333,13 @@ return;
       return;
     }
 
-    if (idNumber.trim() === '') {
-      alert('ID Number cannot be blank');
-      return;
-    }
+    // if (idNumber.trim() === '') {
+    //   alert('ID Number cannot be blank');
+    //   return;
+    // }
 
-    if (age.trim() === '') {
-      alert('Age cannot be blank');
+    if (dob.trim() === "") {
+      alert('Date of Birth cannot be blank');
       return;
     }
 
@@ -351,10 +383,10 @@ return;
       return;
     }
 
-    if (nextOfKin.trim() === '') {
-      alert('nextOfKin cannot be blank');
-      return;
-    }
+    // if (nextOfKin.trim() === '') {
+    //   alert('nextOfKin cannot be blank');
+    //   return;
+    // }
 
     if (allergies.trim() === '') {
       alert('Allergies cannot be blank');
@@ -393,7 +425,7 @@ return;
 
             patientID:patientID,
             idNumber:idNumber,
-            age: age,
+            dob: dob,
             weight: weight,
             height: height,
             streetNumber: streetNumber,
@@ -407,6 +439,7 @@ return;
             folderNumber: folderNumber,
             chronicMedication: chronicMedication,
             nextOfKin: nextOfKin,
+            nextOfKinContact: nextOfKinContact,
             allergies: allergies,
             medicalProblems: medicalProblems,
             immunisations: immunisations,
@@ -426,7 +459,7 @@ return;
             setPId("");
             setIDnum("")
             setUser("");
-            setAge("");
+            setDOB("");
             setWeight("");
             setHeight("");
             setStreetNumber("");
@@ -443,6 +476,7 @@ return;
             setChronicMedication("");
             setImmunisations("");
             setNextOfKin("");
+            setNextOfKinContact("");
             setFolderNumber("");
 
       Load();
@@ -471,7 +505,7 @@ try{
   setPId("");
   setIDnum("")
   setUser("");
-  setAge("");
+  setDOB("");
   setWeight("");
   setHeight("");
   setStreetNumber("");
@@ -488,6 +522,8 @@ try{
   setChronicMedication("");
   setImmunisations("");
   setNextOfKin("");
+  setNextOfKinContact("");
+
   setFolderNumber("");
 
   setImageUrl(null);
@@ -764,15 +800,33 @@ catch{
                     </Col>
                     <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label style={{ color: 'Black', fontSize: '16px'}}>
-                          Age
-                        </label>
-                        <Input type="text" id="age" maxlength = "3"
-                          value={age}
-                          onChange={(event) => {
-                            setAge(event.target.value);
-                          }}
-                        />
+                      <label style={{ color: 'Black', fontSize: '16px'}}>Date of Birth   </label>
+
+                        <Input type="text" id="dob" maxlength = "10"
+                          value={dob}
+                          onChange={handleInputChange}
+                          invalid={!isValidDOB}
+
+                          // {/* <label style={{ color: 'Black', fontSize: '16px'}}>Date of Birth   </label>
+                          // <DatePicker
+                          //   selected={dob}
+                          //   onChange={handleDateChange}
+                          //   peekNextMonth
+                          //   showMonthDropdown
+                          //   showYearDropdown
+                          //   dropdownMode="select"
+                          //   placeholderText="Select Date of Birth"
+                          //   isClearable
+                          //   closeOnScroll={true} */}
+
+                            
+                          />
+                           {!isValidDOB && (
+          <FormFeedback>
+            Please enter a valid date in DD/MM/YYYY format.
+          </FormFeedback>
+        )}
+                        {/* /> */}
                       </FormGroup>
                     </Col>
                   </Row>
@@ -1002,6 +1056,19 @@ catch{
                             setNextOfKin(event.target.value);
                           }}
                         />
+                        
+                      </FormGroup>
+                      <FormGroup>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>
+                        Next Of Kin Contact Number
+                        </label>
+                        <Input type="text" id="nextOfKinContact" maxlength = "10"
+                          value={nextOfKinContact}
+                          onChange={(event) => {
+                            setNextOfKinContact(event.target.value);
+                          }}
+                        />
+                        
                       </FormGroup>
                       </Col>
                       <Col className="pr-1" md="11">

@@ -34,8 +34,10 @@ function RegularTables()
     const [province, setProvince] = useState("");
     // const [patientMedicalInformation, setPatientMedicalInformation] = useState("");
     const [patients, setPatients] = useState([]);
+    const [dob, setDOB] = useState(null);
 
-    const thead = ["Patient ID", "ID number", "Username", "Age", "Weight", "Height", "Street Number", "Street Name", "City", "Province", "Medical Record ID"];
+
+    const thead = ["Patient ID", "ID number", "Username", "DOB", "Weight", "Height", "Street Number", "Street Name", "City", "Province", "Medical Record ID"];
 
     useEffect(() => {
       (async () => await Load())();
@@ -128,7 +130,7 @@ function RegularTables()
                     <td>{patient.patientID}</td>
                     <td>{patient.idNumber}</td>
                     <td>{patient.user.username}</td>
-                    <td>{patient.age}</td>        
+                    <td>{patient.dob}</td>        
                     <td>{patient.weight}</td>   
                     <td>{patient.height}</td>   
                     <td>{patient.streetNumber}</td>   
