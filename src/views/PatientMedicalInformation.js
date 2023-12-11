@@ -25,9 +25,11 @@ function RegularTables()
     const [chronicMedication, setChronicMedication] = useState("");
     const [immunisations, setImmunisations] = useState("");
     const [nextOfKin, setNextOfKin] = useState("");
+    const [nextOfKinContact, setNextOfKinContact] = useState("");
+
     const [folderNumber, setFolderNumber] = useState("");
     const [patientMedicalInformations, setPatientMedicalInformations] = useState([]);
-    const thead = ["patientID", "Medical Record ID",  "Medical Problems", "Prescription", "Medical Test Results", "Allergies", "Chronic Medication", "Immunisations", "Next Of Kin", "Folder Number"];
+    const thead = ["Patient ID", "Medical Record ID",  "Medical Problems", "Prescription", "Medical Test Results", "Allergies", "Chronic Medication", "Immunisations", "Next Of Kin","Next Of Kin Contact", "Folder Number"];
 
     useEffect(() => {
       (async () => await Load())();
@@ -59,6 +61,8 @@ function RegularTables()
             chronicMedication: chronicMedication,
             immunisations: immunisations,
             nextOfKin: nextOfKin,
+            nextOfKinContact: nextOfKinContact,
+
             folderNumber: folderNumber
             
             
@@ -72,6 +76,7 @@ function RegularTables()
             setChronicMedication("");
             setImmunisations("");
             setNextOfKin("");
+            setNextOfKinContact("");
             setFolderNumber("");
 
             Load();
@@ -196,6 +201,7 @@ function RegularTables()
                     <td>{patient.patientMedicalInformation.chronicMedication}</td>
                     <td>{patient.patientMedicalInformation.immunisations}</td> 
                     <td>{patient.patientMedicalInformation.nextOfKin}</td> 
+                    <td>{patient.patientMedicalInformation.nextOfKinContact}</td> 
                     <td>{patient.patientMedicalInformation.folderNumber}</td>    
 
                     {/* <td>

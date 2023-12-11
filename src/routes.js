@@ -1,5 +1,5 @@
 import Home from "views/Home.js";
-
+import React from "react";
 import QrCode from "views/QrCode.js";
 import NurseList from "views/NurseList.js";
 import PatientMedicalInformation from "views/PatientMedicalInformation.js";
@@ -10,6 +10,8 @@ import ManageUsers from "views/ManageUsers.js";
 import ViewUser from "views/ViewUser.js";
 import MedicalFacility from "views/MedicalFacility.js"
 import Disclaimer from "views/Disclaimer.js";
+import Button from "reactstrap";
+
 var dashRoutes = [
   {
     path: "/Home",
@@ -71,10 +73,13 @@ var dashRoutes = [
   {
     path: "/ViewUser/:patientID",
     component: <ViewUser />,
+    
   },
   {
     path: "Disclaimer",
     component: <Disclaimer />,
+
   },
 ];
+
 export default dashRoutes;
