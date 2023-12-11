@@ -24,10 +24,10 @@ function RegularTables()
     const [allergies, setAllergies] = useState("");
     const [chronicMedication, setChronicMedication] = useState("");
     const [immunisations, setImmunisations] = useState("");
-    const [hospitalisations, setHospitalisations] = useState("");
+    const [nextOfKin, setNextOfKin] = useState("");
     const [folderNumber, setFolderNumber] = useState("");
     const [patientMedicalInformations, setPatientMedicalInformations] = useState([]);
-    const thead = ["Medical Record ID", "Medical Problems", "Prescription", "Medical Test Results", "Allergies", "Chronic Medication", "Immunisations", "Hospitalisations", "Folder Number"];
+    const thead = ["patientID", "Medical Record ID",  "Medical Problems", "Prescription", "Medical Test Results", "Allergies", "Chronic Medication", "Immunisations", "Next Of Kin", "Folder Number"];
 
     useEffect(() => {
       (async () => await Load())();
@@ -58,7 +58,7 @@ function RegularTables()
             allergies: allergies,
             chronicMedication: chronicMedication,
             immunisations: immunisations,
-            hospitalisations: hospitalisations,
+            nextOfKin: nextOfKin,
             folderNumber: folderNumber
             
             
@@ -71,7 +71,7 @@ function RegularTables()
             setAllergies("");
             setChronicMedication("");
             setImmunisations("");
-            setHospitalisations("");
+            setNextOfKin("");
             setFolderNumber("");
 
             Load();
@@ -126,7 +126,7 @@ function RegularTables()
           allergies: allergies,
           chronicMedication: chronicMedication,
           immunisations: immunisations,
-          hospitalisations: hospitalisations,
+          nextOfKin: nextOfKin,
           folderNumber: folderNumber
          
          });
@@ -138,7 +138,7 @@ function RegularTables()
          setAllergies("");
          setChronicMedication("");
          setImmunisations("");
-         setHospitalisations("");
+         setNextOfKin("");
          setFolderNumber("");
 
            Load();
@@ -158,7 +158,7 @@ function RegularTables()
         <Col xs={12}>
             <Card>
               <CardHeader>
-                <CardTitle tag="h4" style={{ color: 'Black', fontSize: '25px', fontFamily:'Verdana', fontWeight:'bold'}}>Patient Medical Information Table</CardTitle>
+                <CardTitle tag="h4" style={{ color: 'Black', fontSize: '25px', fontFamily:'Verdana', fontWeight:'bold'}}>Patient Medical Information</CardTitle>
               </CardHeader>
               <CardBody>
 
@@ -187,6 +187,7 @@ function RegularTables()
                 return(
                 <tbody>
                     <tr style={{ color: '', fontSize: '', fontFamily:'Verdana', fontWeight:''}}>
+                    <td>{patient.patientID}</td>
                     <td>{patient.patientMedicalInformation.medicalRecordID}</td>
                     <td>{patient.patientMedicalInformation.medicalProblems}</td>
                     <td>{patient.patientMedicalInformation.prescription}</td>        
@@ -194,7 +195,7 @@ function RegularTables()
                     <td>{patient.patientMedicalInformation.allergies}</td>   
                     <td>{patient.patientMedicalInformation.chronicMedication}</td>
                     <td>{patient.patientMedicalInformation.immunisations}</td> 
-                    <td>{patient.patientMedicalInformation.hospitalisations}</td> 
+                    <td>{patient.patientMedicalInformation.nextOfKin}</td> 
                     <td>{patient.patientMedicalInformation.folderNumber}</td>    
 
                     {/* <td>

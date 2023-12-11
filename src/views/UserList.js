@@ -147,7 +147,7 @@ function RegularTables()
         <Col xs={12}>
             <Card>
               <CardHeader>
-                <CardTitle tag="h4" style={{ color: 'Black', fontSize: '25px', fontFamily:'Verdana', fontWeight:'bold'}}>User Table</CardTitle>
+                <CardTitle tag="h4" style={{ color: 'Black', fontSize: '25px', fontFamily:'Verdana', fontWeight:'bold'}}>User Infromation</CardTitle>
               </CardHeader>
               <CardBody>
 
@@ -184,10 +184,10 @@ function RegularTables()
                     <td>{patient.user.email}</td>   
                     <td>{patient.user.userType}</td>   
 
-                    <td>
+                    {/* <td>
 
                         <button type="button" class="btn btn-danger" onClick={() => DeleteUser(User.username)}>Delete</button>
-                    </td>
+                    </td> */}
                     </tr>
                 </tbody>
                 );
