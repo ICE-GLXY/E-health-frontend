@@ -20,7 +20,6 @@ function Footer(props) {
               >
               Disclaimer
             </Link>
-            <Route path='/admin/Disclaimer' element={<Disclaimer />}></Route>
           </li>
           </ul>
           </nav>
