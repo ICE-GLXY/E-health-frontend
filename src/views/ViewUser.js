@@ -41,7 +41,7 @@ function ViewUser(){
       const [patientID, setPId] = useState('');
       // const [searchId, setSearchId] = useState('');
       const [user, setUser] = useState("");
-      const [age, setAge] = useState("");
+      const [dob, setDOB] = useState("");
       const [weight, setWeight] = useState("");
       const [height, setHeight] = useState("");
       const [streetNumber, setStreetNumber] = useState("");
@@ -61,6 +61,8 @@ function ViewUser(){
       const [chronicMedication, setChronicMedication] = useState("");
       const [immunisations, setImmunisations] = useState("");
       const [nextOfKin, setNextOfKin] = useState("");
+      const [nokContact, setNextOfKinContact] = useState("");
+
       const [folderNumber, setFolderNumber] = useState("");
   
   
@@ -91,7 +93,7 @@ function ViewUser(){
             //leave user in?
             setUser(res.data.user.username);
   
-            setAge(res.data.age);
+            setDOB(res.data.dob);
             setWeight(res.data.weight);
             setHeight(res.data.height);
             setStreetNumber(res.data.streetNumber);
@@ -112,6 +114,7 @@ function ViewUser(){
             setChronicMedication(res.data.patientMedicalInformation.chronicMedication)
             setImmunisations(res.data.patientMedicalInformation.immunisations);
             setNextOfKin(res.data.patientMedicalInformation.nextOfKin);
+            setNextOfKinContact(res.data.patientMedicalInformation.nokContact);
             setFolderNumber(res.data.patientMedicalInformation.folderNumber);
   
             setPatients(res.data.patientID);
@@ -132,7 +135,7 @@ function ViewUser(){
             {
               patientID: patientID,
               user: user,
-              age: age,
+              dob: dob,
               weight: weight,
               height: height,
               streetNumber: streetNumber,
@@ -347,12 +350,12 @@ function ViewUser(){
                       <Col className="pr-1" md="11">
                         <FormGroup>
                           <label >
-                            Age
+                          Date of Birth
                           </label>
-                          <Input type="text" id="age" disabled
-                            value={age}
+                          <Input type="text" id="dob" disabled
+                            value={dob}
                             onChange={(event) => {
-                              setAge(event.target.value);
+                              setDOB(event.target.value);
                             }}
                           />
                         </FormGroup>
@@ -576,6 +579,18 @@ function ViewUser(){
                             }}
                           />
                         </FormGroup>
+                        <FormGroup>
+                        <label >
+                        Next Of Kin Contact Number
+                        </label>
+                        <Input type="text" id="nokContact" maxlength = "10" disabled
+                          value={nokContact}
+                          onChange={(event) => {
+                            setNextOfKinContact(event.target.value);
+                          }}
+                        />
+                        
+                      </FormGroup>
                         </Col>
                         <Col className="pr-1" md="11">
                         <FormGroup>
