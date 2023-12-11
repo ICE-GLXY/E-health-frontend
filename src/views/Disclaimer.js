@@ -1,6 +1,18 @@
 import React from "react";
 // react plugin used to create charts
+// javascript plugin used to create scrollbars on windows
+import PerfectScrollbar from "perfect-scrollbar";
 
+// reactstrap components
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
+
+// core components
+import DemoNavbar from "components/Navbars/DemoNavbar.js";
+import Footer from "components/Footer/Footer.js";
+import Sidebar from "components/Sidebar/Sidebar.js";
+import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
+
+import routes from "routes.js";
 // reactstrap components
 import {
     Card,
@@ -14,12 +26,57 @@ import {
 
 // core components
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
+var ps;
 
-function Disclaimer() {
+function Disclaimer(props) {
+    const location = useLocation();
+    const [backgroundColor, setBackgroundColor] = React.useState("blue");
+    const mainPanel = React.useRef();
+    React.useEffect(() => {
+      if (navigator.platform.indexOf("Win") > -1) {
+        ps = new PerfectScrollbar(mainPanel.current);
+        document.body.classList.toggle("perfect-scrollbar-on");
+      }
+      return function cleanup() {
+        if (navigator.platform.indexOf("Win") > -1) {
+          ps.destroy();
+          document.body.classList.toggle("perfect-scrollbar-on");
+        }
+      };
+    });
+    React.useEffect(() => {
+      document.documentElement.scrollTop = 0;
+      document.scrollingElement.scrollTop = 0;
+      mainPanel.current.scrollTop = 0;
+    }, [location]);
+    const handleColorClick = (color) => {
+      setBackgroundColor(color);
+    };
+
     return (
+        
         <>
-
-            <PanelHeader size="sm"
+        <div className="wrapper">
+      <Sidebar {...props} routes={routes} backgroundColor={backgroundColor} />
+      <div className="main-panel" ref={mainPanel}>
+        <DemoNavbar {...props} />
+        <Routes>
+          {routes.map((prop, key) => {
+            return (
+              <Route
+                path={prop.path}
+                element={prop.component}
+                key={key}
+                exact
+              />
+            );
+          })}
+          <Route
+            path="/admin"
+            element={<Navigate to="/admin/Home" replace />}
+          />
+        </Routes>
+        <PanelHeader size="sm"
                 content={
                     <div className="header text-center">
                         {/* <h2 className="title">E-Health Managament System</h2> */}
@@ -79,6 +136,15 @@ function Disclaimer() {
                     </Col>
                 </Row>
             </div>
+        <Footer fluid />
+      </div>
+      <FixedPlugin
+        bgColor={backgroundColor}
+        handleColorClick={handleColorClick}
+      />
+    </div>
+
+            
         </>
     );
 }

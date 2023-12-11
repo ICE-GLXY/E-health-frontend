@@ -2,7 +2,8 @@ import React from "react";
 import { Container } from "reactstrap";
 // used for making the prop types of this component
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
+import Disclaimer from "views/Disclaimer.js";
 
 function Footer(props) {
   return (
@@ -19,6 +20,7 @@ function Footer(props) {
               >
               Disclaimer
             </Link>
+            <Route path='/admin/Disclaimer' element={<Disclaimer />}></Route>
           </li>
           </ul>
           </nav>
