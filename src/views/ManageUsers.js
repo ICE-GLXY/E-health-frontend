@@ -101,7 +101,7 @@ const handleScanWebCam = (result) => {
     const [allergies, setAllergies] = useState("");
     const [chronicMedication, setChronicMedication] = useState("");
     const [immunisations, setImmunisations] = useState("");
-    const [hospitalisations, setHospitalisations] = useState("");
+    const [nextOfKin, setNextOfKin] = useState("");
     const [folderNumber, setFolderNumber] = useState("");
 
 
@@ -191,7 +191,7 @@ return;
           setAllergies(res.data.patientMedicalInformation.allergies);
           setChronicMedication(res.data.patientMedicalInformation.chronicMedication)
           setImmunisations(res.data.patientMedicalInformation.immunisations);
-          setHospitalisations(res.data.patientMedicalInformation.hospitalisations);
+          setNextOfKin(res.data.patientMedicalInformation.nextOfKin);
           setFolderNumber(res.data.patientMedicalInformation.folderNumber);
           
           
@@ -245,7 +245,7 @@ return;
           setAllergies(res.data.patientMedicalInformation.allergies);
           setChronicMedication(res.data.patientMedicalInformation.chronicMedication)
           setImmunisations(res.data.patientMedicalInformation.immunisations);
-          setHospitalisations(res.data.patientMedicalInformation.hospitalisations);
+          setNextOfKin(res.data.patientMedicalInformation.nextOfKin);
           setFolderNumber(res.data.patientMedicalInformation.folderNumber);
 
           setPatients(res.data.patientID);
@@ -351,8 +351,8 @@ return;
       return;
     }
 
-    if (hospitalisations.trim() === '') {
-      alert('Hospitalisations cannot be blank');
+    if (nextOfKin.trim() === '') {
+      alert('nextOfKin cannot be blank');
       return;
     }
 
@@ -406,7 +406,7 @@ return;
             medicalTestResults: medicalTestResults,
             folderNumber: folderNumber,
             chronicMedication: chronicMedication,
-            hospitalisations: hospitalisations,
+            nextOfKin: nextOfKin,
             allergies: allergies,
             medicalProblems: medicalProblems,
             immunisations: immunisations,
@@ -442,7 +442,7 @@ return;
             setAllergies("");
             setChronicMedication("");
             setImmunisations("");
-            setHospitalisations("");
+            setNextOfKin("");
             setFolderNumber("");
 
       Load();
@@ -487,7 +487,7 @@ try{
   setAllergies("");
   setChronicMedication("");
   setImmunisations("");
-  setHospitalisations("");
+  setNextOfKin("");
   setFolderNumber("");
 
   setImageUrl(null);
@@ -910,7 +910,7 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label style={{ color: 'Black', fontSize: '16px'}}>Medical Problems</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Medical Problem</label>
                         <Input type="text" id="medicalProblems" maxlength = "255"
                           value={medicalProblems}
                           onChange={(event) => {
@@ -937,7 +937,7 @@ catch{
                     <Col className="pr-1" md="11">
                       <FormGroup>
                         {/* row 2 col 1 */}
-                        <label style={{ color: 'Black', fontSize: '16px'}}>Medical Test Results</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Medical Test Result</label>
                         <Input type="text" id="medicalTestResults" maxlength = "100"
                           value={medicalTestResults}
                           onChange={(event) => {
@@ -950,7 +950,7 @@ catch{
                   <Row>
                     <Col className="pr-1" md="11">
                       <FormGroup>
-                        <label style={{ color: 'Black', fontSize: '16px'}}>Allergies</label>
+                        <label style={{ color: 'Black', fontSize: '16px'}}>Allergen</label>
                         <InputGroup >
                         <Input type="text" id="allergies" maxlength = "75"
                             value={allergies}
@@ -981,7 +981,7 @@ catch{
                   <Col className="pr-1" md="11">
                       <FormGroup>
                         <label style={{ color: 'Black', fontSize: '16px'}}>
-                          Immunisations
+                          Immunisation
                         </label>
                         <Input type="text" id="immunisations" maxlength = "75"
                           value={immunisations}
@@ -994,12 +994,12 @@ catch{
                       <Col className="pr-1" md="11">
                       <FormGroup>
                         <label style={{ color: 'Black', fontSize: '16px'}}>
-                          Hospitalisations
+                        Next Of Kin
                         </label>
-                        <Input type="text" id="hospitalisations" maxlength = "75"
-                          value={hospitalisations}
+                        <Input type="text" id="nextOfKin" maxlength = "75"
+                          value={nextOfKin}
                           onChange={(event) => {
-                            setHospitalisations(event.target.value);
+                            setNextOfKin(event.target.value);
                           }}
                         />
                       </FormGroup>

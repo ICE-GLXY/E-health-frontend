@@ -13,7 +13,7 @@ function Footer(props) {
             <li>
         
         &copy; {1900 + new Date().getYear()} {" "}
-              <Link
+              <Link 
               to={{
                 pathname: `/admin/Disclaimer`}}
               >

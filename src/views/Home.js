@@ -48,8 +48,8 @@ function Home() {
             {/* Shipped products chart  */}
             <Card className="card-chart" color="dark">
               <CardBody>
-                {/* <img src={BMedication}/> */}
-                <UncontrolledCarousel fade
+                <img src={Steth}/>
+                {/* <UncontrolledCarousel fade
   items={[
     {
       // altText: 'Slide 1',
@@ -76,7 +76,7 @@ function Home() {
       src: TabsHor
     }
   ]}
- />
+ /> */}
               {/* insert into body  */}
               </CardBody>
             </Card>

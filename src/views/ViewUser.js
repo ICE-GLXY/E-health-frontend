@@ -28,6 +28,7 @@ function ViewUser(){
   
     const [username, setId] = useState('');
     const [name, setName] = useState("");
+    const [surname, setSName] = useState("");
     const [password, setPassword] = useState("");
     const [cellPhoneNumber, setCellPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
@@ -59,7 +60,7 @@ function ViewUser(){
       const [allergies, setAllergies] = useState("");
       const [chronicMedication, setChronicMedication] = useState("");
       const [immunisations, setImmunisations] = useState("");
-      const [hospitalisations, setHospitalisations] = useState("");
+      const [nextOfKin, setNextOfKin] = useState("");
       const [folderNumber, setFolderNumber] = useState("");
   
   
@@ -78,6 +79,7 @@ function ViewUser(){
           
             setId(res.data.user.username);
             setName(res.data.user.name);
+            setSName(res.data.user.surname);
             setPassword(res.data.user.password);
             setCellPhoneNumber(res.data.user.cellPhoneNumber);
             setEmail(res.data.user.email);
@@ -109,7 +111,7 @@ function ViewUser(){
             setAllergies(res.data.patientMedicalInformation.allergies);
             setChronicMedication(res.data.patientMedicalInformation.chronicMedication)
             setImmunisations(res.data.patientMedicalInformation.immunisations);
-            setHospitalisations(res.data.patientMedicalInformation.hospitalisations);
+            setNextOfKin(res.data.patientMedicalInformation.nextOfKin);
             setFolderNumber(res.data.patientMedicalInformation.folderNumber);
   
             setPatients(res.data.patientID);
@@ -202,7 +204,36 @@ function ViewUser(){
                           />
                         </FormGroup>
                       </Col>
-                      <Col className="pr-1" md="11">
+                      </Row>
+                      <Row>
+                      <Col className="pr-1" md="6">
+                        <FormGroup>
+                          {/* row 2 col 1 */}
+                          <label>Name</label>
+                          <Input type="text" id="name" disabled
+                            value={name}
+                            onChange={(event) => {
+                              setName(event.target.value);
+                            }}
+                          />
+                        </FormGroup>
+                      </Col>
+
+                      <Col className="pr-1" md="5">
+                        <FormGroup>
+                          {/* row 2 col 1 */}
+                          <label>Surname</label>
+                          <Input type="text" id="name" disabled
+                            value={surname}
+                            onChange={(event) => {
+                              setName(event.target.value);
+                            }}
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className="pr-1" md="6">
                         <FormGroup>
                           {/* row 2 col 1 */}
                           <label>Phone Number</label>
@@ -214,7 +245,7 @@ function ViewUser(){
                           />
                         </FormGroup>
                       </Col>
-                      <Col className="pr-1" md="11">
+                      <Col className="pr-1" md="5">
                         <FormGroup>
                           <label htmlFor="exampleInputEmail1">
                             Email address
@@ -223,20 +254,6 @@ function ViewUser(){
                             value={email}
                             onChange={(event) => {
                               setEmail(event.target.value);
-                            }}
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className="pr-1" md="11">
-                        <FormGroup>
-                          {/* row 2 col 1 */}
-                          <label>Name and Surname</label>
-                          <Input type="text" id="name" disabled
-                            value={name}
-                            onChange={(event) => {
-                              setName(event.target.value);
                             }}
                           />
                         </FormGroup>
@@ -342,9 +359,8 @@ function ViewUser(){
                       </Col>
                     </Row>
                     <Row>
-                      <Col className="pr-1" md="11">
+                      <Col className="pr-1" md="6">
                         <FormGroup>
-                          {/* row 2 col 1 */}
                           <label>Weight</label>
                           <Input type="text" id="weight" disabled
                             value={weight}
@@ -354,24 +370,20 @@ function ViewUser(){
                           />
                         </FormGroup>
                       </Col>
-                    </Row>
-                    <Row>
-                      <Col className="pr-1" md="11">
+                      <Col className="pr-1" md="5">
                         <FormGroup>
                           <label>Height</label>
-                          <InputGroup >
                             <Input type="text" id="height" disabled
                               value={height}
                               onChange={(event) => {
                                 setHeight(event.target.value);
                               }}
                             />
-                          </InputGroup>
                         </FormGroup>
                       </Col>
                     </Row>
                     <Row>
-                      <Col className="pr-1" md="11"> 
+                      <Col className="pr-1" md="2"> 
                       <FormGroup>
                           <label >
                             Street Number
@@ -385,9 +397,7 @@ function ViewUser(){
                         </FormGroup>
   
                        </Col>
-                      
-                    </Row>
-                    <Col className="pr-1" md="11">
+                    <Col className="pr-1" md="9">
                         <FormGroup>
                           <label >
                             Street Name
@@ -400,7 +410,10 @@ function ViewUser(){
                           />
                         </FormGroup>
                         </Col>
-                        <Col className="pr-1" md="11">
+                                              
+                    </Row>
+                    <Row>
+                        <Col className="pr-1" md="6">
                         <FormGroup>
                           <label >
                             City
@@ -413,7 +426,7 @@ function ViewUser(){
                           />
                         </FormGroup>
                         </Col>
-                        <Col className="pr-1" md="11">
+                        <Col className="pr-1" md="5">
                         <FormGroup>
                           <label >
                             Province
@@ -426,6 +439,7 @@ function ViewUser(){
                           />
                         </FormGroup>
                         </Col>
+                        </Row>
                         <Col className="pr-1" md="11">
                         <FormGroup>
                           <label >
@@ -553,12 +567,12 @@ function ViewUser(){
                         <Col className="pr-1" md="11">
                         <FormGroup>
                           <label >
-                            Hospitalisations
+                          Next Of Kin
                           </label>
-                          <Input type="text" id="hospitalisations" disabled
-                            value={hospitalisations}
+                          <Input type="text" id="nextOfKin" disabled
+                            value={nextOfKin}
                             onChange={(event) => {
-                              setHospitalisations(event.target.value);
+                              setNextOfKin(event.target.value);
                             }}
                           />
                         </FormGroup>
