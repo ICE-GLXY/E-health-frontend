@@ -25,7 +25,7 @@ function RegularTables()
     const [chronicMedication, setChronicMedication] = useState("");
     const [immunisations, setImmunisations] = useState("");
     const [nextOfKin, setNextOfKin] = useState("");
-    const [nextOfKinContact, setNextOfKinContact] = useState("");
+    const [nokContact, setNextOfKinContact] = useState("");
 
     const [folderNumber, setFolderNumber] = useState("");
     const [patientMedicalInformations, setPatientMedicalInformations] = useState([]);
@@ -61,7 +61,7 @@ function RegularTables()
             chronicMedication: chronicMedication,
             immunisations: immunisations,
             nextOfKin: nextOfKin,
-            nextOfKinContact: nextOfKinContact,
+            nokContact: nokContact,
 
             folderNumber: folderNumber
             
@@ -201,7 +201,7 @@ function RegularTables()
                     <td>{patient.patientMedicalInformation.chronicMedication}</td>
                     <td>{patient.patientMedicalInformation.immunisations}</td> 
                     <td>{patient.patientMedicalInformation.nextOfKin}</td> 
-                    <td>{patient.patientMedicalInformation.nextOfKinContact}</td> 
+                    <td>{patient.patientMedicalInformation.nokContact}</td> 
                     <td>{patient.patientMedicalInformation.folderNumber}</td>    
 
                     {/* <td>
